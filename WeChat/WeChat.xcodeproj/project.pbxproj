@@ -144,6 +144,18 @@
 		967A80D71C27D45D00772D90 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967A80551C27D45D00772D90 /* libidn.a */; };
 		967A80D91C27D49D00772D90 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967A80D81C27D49D00772D90 /* libxml2.tbd */; };
 		967A80DB1C27D4AF00772D90 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967A80DA1C27D4AF00772D90 /* libresolv.tbd */; };
+		967A80DF1C27E7C900772D90 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A80DE1C27E7C900772D90 /* Login.storyboard */; };
+		967A80E31C27F79C00772D90 /* WCOtherLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */; };
+		967A80E61C2800DC00772D90 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80E51C2800DC00772D90 /* UIImage+Extension.swift */; };
+		967A80E81C2800E900772D90 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80E71C2800E900772D90 /* UIColor+Extension.swift */; };
+		967A80EA1C28052800772D90 /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80E91C28052800772D90 /* UIButton+Extention.swift */; };
+		967A80F21C283C7700772D90 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A80EE1C283C7700772D90 /* MBProgressHUD+MJ.m */; };
+		967A80F31C283C7700772D90 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 967A80EF1C283C7700772D90 /* MBProgressHUD.bundle */; };
+		967A80F41C283C7700772D90 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 967A80F11C283C7700772D90 /* MBProgressHUD.m */; };
+		967A80F91C2843B500772D90 /* WCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80F81C2843B500772D90 /* WCNavigationController.swift */; };
+		967A80FC1C28481C00772D90 /* WCMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80FB1C28481C00772D90 /* WCMeViewController.swift */; };
+		96B0884E1C290C6100F3B921 /* WCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884D1C290C6100F3B921 /* WCLog.swift */; };
+		96B088501C290DB500F3B921 /* WBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884F1C290DB500F3B921 /* WBLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -445,6 +457,20 @@
 		967A80571C27D45D00772D90 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		967A80D81C27D49D00772D90 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		967A80DA1C27D4AF00772D90 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		967A80DE1C27E7C900772D90 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCOtherLoginViewController.swift; sourceTree = "<group>"; };
+		967A80E51C2800DC00772D90 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "../UIImage+Extension.swift"; sourceTree = "<group>"; };
+		967A80E71C2800E900772D90 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		967A80E91C28052800772D90 /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
+		967A80ED1C283C7700772D90 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		967A80EE1C283C7700772D90 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		967A80EF1C283C7700772D90 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		967A80F01C283C7700772D90 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		967A80F11C283C7700772D90 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		967A80F81C2843B500772D90 /* WCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCNavigationController.swift; sourceTree = "<group>"; };
+		967A80FB1C28481C00772D90 /* WCMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCMeViewController.swift; sourceTree = "<group>"; };
+		96B0884D1C290C6100F3B921 /* WCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLog.swift; sourceTree = "<group>"; };
+		96B0884F1C290DB500F3B921 /* WBLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +504,7 @@
 		967A7ECF1C27D40900772D90 = {
 			isa = PBXGroup;
 			children = (
+				967A80EB1C283C5300772D90 /* 第三方框架 */,
 				967A80DA1C27D4AF00772D90 /* libresolv.tbd */,
 				967A80D81C27D49D00772D90 /* libxml2.tbd */,
 				967A7F091C27D45000772D90 /* bridge.h */,
@@ -501,13 +528,12 @@
 		967A7EDA1C27D40900772D90 /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				967A80F61C28434600772D90 /* Common【公共】 */,
+				967A80DC1C27E76300772D90 /* Main【主要】 */,
+				967A80DD1C27E77A00772D90 /* Login【登录】 */,
+				967A80E41C2800AF00772D90 /* CategoryTool */,
+				967A80E01C27E7D500772D90 /* Other */,
 				967A7F0A1C27D45C00772D90 /* XMPPFramework */,
-				967A7EDB1C27D40900772D90 /* AppDelegate.swift */,
-				967A7EDD1C27D40900772D90 /* ViewController.swift */,
-				967A7EDF1C27D40900772D90 /* Main.storyboard */,
-				967A7EE21C27D40900772D90 /* Assets.xcassets */,
-				967A7EE41C27D40900772D90 /* LaunchScreen.storyboard */,
-				967A7EE71C27D40900772D90 /* Info.plist */,
 			);
 			path = WeChat;
 			sourceTree = "<group>";
@@ -1314,6 +1340,100 @@
 			path = libidn;
 			sourceTree = "<group>";
 		};
+		967A80DC1C27E76300772D90 /* Main【主要】 */ = {
+			isa = PBXGroup;
+			children = (
+				967A80FA1C2847FB00772D90 /* Controllers */,
+				967A7EDF1C27D40900772D90 /* Main.storyboard */,
+			);
+			path = "Main【主要】";
+			sourceTree = "<group>";
+		};
+		967A80DD1C27E77A00772D90 /* Login【登录】 */ = {
+			isa = PBXGroup;
+			children = (
+				967A80E11C27F74400772D90 /* Controllers */,
+				967A80DE1C27E7C900772D90 /* Login.storyboard */,
+			);
+			path = "Login【登录】";
+			sourceTree = "<group>";
+		};
+		967A80E01C27E7D500772D90 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				967A7EDD1C27D40900772D90 /* ViewController.swift */,
+				967A7EDB1C27D40900772D90 /* AppDelegate.swift */,
+				967A7EE41C27D40900772D90 /* LaunchScreen.storyboard */,
+				967A7EE71C27D40900772D90 /* Info.plist */,
+				967A7EE21C27D40900772D90 /* Assets.xcassets */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		967A80E11C27F74400772D90 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		967A80E41C2800AF00772D90 /* CategoryTool */ = {
+			isa = PBXGroup;
+			children = (
+				967A80E51C2800DC00772D90 /* UIImage+Extension.swift */,
+				967A80E91C28052800772D90 /* UIButton+Extention.swift */,
+				967A80E71C2800E900772D90 /* UIColor+Extension.swift */,
+				96B0884F1C290DB500F3B921 /* WBLog.swift */,
+				96B0884D1C290C6100F3B921 /* WCLog.swift */,
+			);
+			path = CategoryTool;
+			sourceTree = "<group>";
+		};
+		967A80EB1C283C5300772D90 /* 第三方框架 */ = {
+			isa = PBXGroup;
+			children = (
+				967A80EC1C283C7700772D90 /* MBProgressHUD */,
+			);
+			path = "第三方框架";
+			sourceTree = "<group>";
+		};
+		967A80EC1C283C7700772D90 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				967A80ED1C283C7700772D90 /* MBProgressHUD+MJ.h */,
+				967A80EE1C283C7700772D90 /* MBProgressHUD+MJ.m */,
+				967A80EF1C283C7700772D90 /* MBProgressHUD.bundle */,
+				967A80F01C283C7700772D90 /* MBProgressHUD.h */,
+				967A80F11C283C7700772D90 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		967A80F61C28434600772D90 /* Common【公共】 */ = {
+			isa = PBXGroup;
+			children = (
+				967A80F71C28438100772D90 /* Controllers */,
+			);
+			path = "Common【公共】";
+			sourceTree = "<group>";
+		};
+		967A80F71C28438100772D90 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967A80F81C2843B500772D90 /* WCNavigationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		967A80FA1C2847FB00772D90 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1420,9 +1540,11 @@
 			files = (
 				967A80D61C27D45D00772D90 /* build-libidn.sh in Resources */,
 				967A7EE61C27D40900772D90 /* LaunchScreen.storyboard in Resources */,
+				967A80DF1C27E7C900772D90 /* Login.storyboard in Resources */,
 				967A7EE31C27D40900772D90 /* Assets.xcassets in Resources */,
 				967A80D11C27D45D00772D90 /* README.txt in Resources */,
 				967A7EE11C27D40900772D90 /* Main.storyboard in Resources */,
+				967A80F31C283C7700772D90 /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1588,8 @@
 				967A80C51C27D45D00772D90 /* RFImageToDataTransformer.m in Sources */,
 				967A80651C27D45D00772D90 /* XMPPMessage.m in Sources */,
 				967A80991C27D45D00772D90 /* XMPPvCardTempTel.m in Sources */,
+				967A80F91C2843B500772D90 /* WCNavigationController.swift in Sources */,
+				967A80FC1C28481C00772D90 /* WCMeViewController.swift in Sources */,
 				967A80971C27D45D00772D90 /* XMPPvCardTempLabel.m in Sources */,
 				967A80B71C27D45D00772D90 /* XMPPAutoPing.m in Sources */,
 				967A80941C27D45D00772D90 /* XMPPvCardTempAdrTypes.m in Sources */,
@@ -1477,6 +1601,7 @@
 				967A80691C27D45D00772D90 /* XMPPStream.m in Sources */,
 				967A80AA1C27D45D00772D90 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
 				967A808F1C27D45D00772D90 /* XMPPvCardCoreDataStorage.m in Sources */,
+				967A80E31C27F79C00772D90 /* WCOtherLoginViewController.swift in Sources */,
 				967A80751C27D45D00772D90 /* XMPPRosterMemoryStorage.m in Sources */,
 				967A80921C27D45D00772D90 /* XMPPvCardTemp.m in Sources */,
 				967A80AF1C27D45D00772D90 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
@@ -1495,6 +1620,7 @@
 				967A80D51C27D45D00772D90 /* DDXMLNode.m in Sources */,
 				967A80851C27D45D00772D90 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				967A80B41C27D45D00772D90 /* XMPPMessage+XEP_0184.m in Sources */,
+				967A80E81C2800E900772D90 /* UIColor+Extension.swift in Sources */,
 				967A80CC1C27D45D00772D90 /* DDFileLogger.m in Sources */,
 				967A80791C27D45D00772D90 /* XMPPIQ+JabberRPC.m in Sources */,
 				967A807C1C27D45D00772D90 /* XMPPIQ+LastActivity.m in Sources */,
@@ -1505,9 +1631,11 @@
 				967A805B1C27D45D00772D90 /* XMPPDigestMD5Authentication.m in Sources */,
 				967A80C01C27D45D00772D90 /* XMPPMessage+XEP_0308.m in Sources */,
 				967A805A1C27D45D00772D90 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
+				967A80F21C283C7700772D90 /* MBProgressHUD+MJ.m in Sources */,
 				967A80C81C27D45D00772D90 /* XMPPStringPrep.m in Sources */,
 				967A807A1C27D45D00772D90 /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				967A80811C27D45D00772D90 /* XMPPRoomMessageCoreDataStorageObject.m in Sources */,
+				96B088501C290DB500F3B921 /* WBLog.swift in Sources */,
 				967A80741C27D45D00772D90 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				967A808C1C27D45D00772D90 /* XMPPRoom.m in Sources */,
 				967A805C1C27D45D00772D90 /* XMPPPlainAuthentication.m in Sources */,
@@ -1518,6 +1646,7 @@
 				967A80C31C27D45D00772D90 /* DDList.m in Sources */,
 				967A80881C27D45D00772D90 /* XMPPRoomMessageMemoryStorageObject.m in Sources */,
 				967A80671C27D45D00772D90 /* XMPPParser.m in Sources */,
+				967A80EA1C28052800772D90 /* UIButton+Extention.swift in Sources */,
 				967A80BD1C27D45D00772D90 /* XMPPAttentionModule.m in Sources */,
 				967A80661C27D45D00772D90 /* XMPPModule.m in Sources */,
 				967A80A01C27D45D00772D90 /* XMPPMessage+XEP_0066.m in Sources */,
@@ -1526,6 +1655,7 @@
 				967A80AC1C27D45D00772D90 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				967A80761C27D45D00772D90 /* XMPPUserMemoryStorageObject.m in Sources */,
 				967A808D1C27D45D00772D90 /* XMPPvCard.xcdatamodeld in Sources */,
+				967A80F41C283C7700772D90 /* MBProgressHUD.m in Sources */,
 				967A80BA1C27D45D00772D90 /* XMPPTime.m in Sources */,
 				967A808B1C27D45D00772D90 /* XMPPMUC.m in Sources */,
 				967A80A41C27D45D00772D90 /* XMPPSoftwareVersion.m in Sources */,
@@ -1538,6 +1668,7 @@
 				967A805D1C27D45D00772D90 /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				967A80A11C27D45D00772D90 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				967A80B51C27D45D00772D90 /* XMPPMessageDeliveryReceipts.m in Sources */,
+				96B0884E1C290C6100F3B921 /* WCLog.swift in Sources */,
 				967A80AB1C27D45D00772D90 /* XMPPCapabilities.m in Sources */,
 				967A80681C27D45D00772D90 /* XMPPPresence.m in Sources */,
 				967A80B91C27D45D00772D90 /* XMPPAutoTime.m in Sources */,
@@ -1548,6 +1679,7 @@
 				967A80B11C27D45D00772D90 /* XMPPvCardAvatarModule.m in Sources */,
 				967A80591C27D45D00772D90 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				967A80C61C27D45D00772D90 /* XMPPIDTracker.m in Sources */,
+				967A80E61C2800DC00772D90 /* UIImage+Extension.swift in Sources */,
 				967A80CB1C27D45D00772D90 /* DDASLLogger.m in Sources */,
 				967A80A51C27D45D00772D90 /* XMPPTransports.m in Sources */,
 				967A80B61C27D45D00772D90 /* XMPPBlocking.m in Sources */,
@@ -1615,6 +1747,7 @@
 				967A7EE01C27D40900772D90 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		967A7EE41C27D40900772D90 /* LaunchScreen.storyboard */ = {
@@ -1818,6 +1951,7 @@
 				967A7F021C27D40900772D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		967A7F031C27D40900772D90 /* Build configuration list for PBXNativeTarget "WeChatTests" */ = {
 			isa = XCConfigurationList;
@@ -1826,6 +1960,7 @@
 				967A7F051C27D40900772D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		967A7F061C27D40900772D90 /* Build configuration list for PBXNativeTarget "WeChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -1834,6 +1969,7 @@
 				967A7F081C27D40900772D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
