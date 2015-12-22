@@ -26,7 +26,7 @@
         <!--登录-->
         <scene sceneID="ZAu-2J-Tgn">
             <objects>
-                <viewController id="VD8-5g-4yS" sceneMemberID="viewController">
+                <viewController id="VD8-5g-4yS" customClass="WCLoginViewController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WQ6-Qj-8jH"/>
                         <viewControllerLayoutGuide type="bottom" id="hrF-jK-gOs"/>
@@ -80,13 +80,8 @@
                                         <rect key="frame" x="106" y="8" width="68" height="68"/>
                                         <animations/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-6V-SpV">
-                                        <rect key="frame" x="125" y="110" width="30" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="登录"/>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTV-V8-rms">
-                                        <rect key="frame" x="0.0" y="140" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="110" width="280" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -99,6 +94,14 @@
                                     <constraint firstAttribute="width" constant="280" id="imc-GX-BXr"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-6V-SpV">
+                                <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" title="登录"/>
+                                <connections>
+                                    <action selector="loginBtnClick:" destination="VD8-5g-4yS" eventType="touchUpInside" id="ESa-JX-G50"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +113,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="N8U-Fb-vsz"/>
+                    <connections>
+                        <outlet property="loginBtn" destination="7SM-6V-SpV" id="Zuf-tI-5Ro"/>
+                        <outlet property="pwdField" destination="hTV-V8-rms" id="IB1-eq-4Hb"/>
+                        <outlet property="userLabel" destination="B7m-k2-aq7" id="0on-S3-DaY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bR6-zC-Set" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

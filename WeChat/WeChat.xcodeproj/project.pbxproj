@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960D8BA21C2920410099E13A /* WCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BA11C2920410099E13A /* WCLoginViewController.swift */; };
+		960D8BA41C29206C0099E13A /* WCBaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BA31C29206C0099E13A /* WCBaseLoginViewController.swift */; };
+		960D8BA71C2926400099E13A /* WCUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BA61C2926400099E13A /* WCUserInfo.swift */; };
 		967A7EDC1C27D40900772D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDB1C27D40900772D90 /* AppDelegate.swift */; };
 		967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDD1C27D40900772D90 /* ViewController.swift */; };
 		967A7EE11C27D40900772D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A7EDF1C27D40900772D90 /* Main.storyboard */; };
@@ -176,6 +179,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960D8BA11C2920410099E13A /* WCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WCLoginViewController.swift; path = "../../Main【主要】/Controllers/WCLoginViewController.swift"; sourceTree = "<group>"; };
+		960D8BA31C29206C0099E13A /* WCBaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WCBaseLoginViewController.swift; path = "../../Main【主要】/Controllers/WCBaseLoginViewController.swift"; sourceTree = "<group>"; };
+		960D8BA61C2926400099E13A /* WCUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCUserInfo.swift; sourceTree = "<group>"; };
 		967A7ED81C27D40900772D90 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967A7EDB1C27D40900772D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967A7EDD1C27D40900772D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +507,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960D8BA51C29260B0099E13A /* Singleton(单例) */ = {
+			isa = PBXGroup;
+			children = (
+				960D8BA61C2926400099E13A /* WCUserInfo.swift */,
+			);
+			path = "Singleton(单例)";
+			sourceTree = "<group>";
+		};
 		967A7ECF1C27D40900772D90 = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1388,8 @@
 			isa = PBXGroup;
 			children = (
 				967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */,
+				960D8BA11C2920410099E13A /* WCLoginViewController.swift */,
+				960D8BA31C29206C0099E13A /* WCBaseLoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1413,6 +1429,7 @@
 		967A80F61C28434600772D90 /* Common【公共】 */ = {
 			isa = PBXGroup;
 			children = (
+				960D8BA51C29260B0099E13A /* Singleton(单例) */,
 				967A80F71C28438100772D90 /* Controllers */,
 			);
 			path = "Common【公共】";
@@ -1661,10 +1678,12 @@
 				967A80A41C27D45D00772D90 /* XMPPSoftwareVersion.m in Sources */,
 				967A80B21C27D45D00772D90 /* XMPPMessage+XEP_0172.m in Sources */,
 				967A805E1C27D45D00772D90 /* XMPPXOAuth2Google.m in Sources */,
+				960D8BA71C2926400099E13A /* WCUserInfo.swift in Sources */,
 				967A80621C27D45D00772D90 /* XMPPElement.m in Sources */,
 				967A80BC1C27D45D00772D90 /* XEP_0223.m in Sources */,
 				967A80AE1C27D45D00772D90 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				967A808E1C27D45D00772D90 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
+				960D8BA21C2920410099E13A /* WCLoginViewController.swift in Sources */,
 				967A805D1C27D45D00772D90 /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				967A80A11C27D45D00772D90 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				967A80B51C27D45D00772D90 /* XMPPMessageDeliveryReceipts.m in Sources */,
@@ -1674,6 +1693,7 @@
 				967A80B91C27D45D00772D90 /* XMPPAutoTime.m in Sources */,
 				967A806E1C27D45D00772D90 /* XMPPReconnect.m in Sources */,
 				967A80A61C27D45D00772D90 /* NSString+XEP_0106.m in Sources */,
+				960D8BA41C29206C0099E13A /* WCBaseLoginViewController.swift in Sources */,
 				967A80771C27D45D00772D90 /* XMPPRoster.m in Sources */,
 				967A80891C27D45D00772D90 /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
 				967A80B11C27D45D00772D90 /* XMPPvCardAvatarModule.m in Sources */,

@@ -57,6 +57,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         //self.connectToHost()
         // 设置导航栏背景
         WCNavigationController.setupNavTheme()
+        
+        // 从沙里加载用户的数据到单例
+        WCUserInfo.sharedWCUserInfo.loadUserInfoFromSanbox()
+
+        // 判断用户的登录状态，YES 直接来到主界面
+        if(WCUserInfo.sharedWCUserInfo.loginStatus == true){
+            // 3. 回到登录界面
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            self.window!.rootViewController = storyboard.instantiateInitialViewController();
+            
+            // 自动登录服务
+            self.xmppUserLogin(nil)
+        }
         return true
     }
     
@@ -81,8 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         
         // 设置登录用户JID
         //resource 标识用户登录的客户端 iphone android
-        // 从沙盒获取用户名
-        let  user:String = NSUserDefaults.standardUserDefaults().objectForKey("user") as! String
+        // 从单例获取用户名
+        let user:String  = WCUserInfo.sharedWCUserInfo.user;
+
         let myJID:XMPPJID = XMPPJID.jidWithUser(user, domain: "4jbook-pro.local", resource: "iphone8")
         _xmppStream!.myJID = myJID;
         // 设置服务器域名
@@ -107,8 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     func sendPwdToHost(){
         NSLog("再发送密码授权");
         // 从沙盒里获取密码
-        let  pwd:String = NSUserDefaults.standardUserDefaults().objectForKey("pwd") as! String
-
+        // 从单例获取用户名
+        let pwd:String  = WCUserInfo.sharedWCUserInfo.pwd;
         do {
             try _xmppStream!.authenticateWithPassword(pwd)
             print("发送密码成功")
@@ -189,11 +203,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         // 3. 回到登录界面
         let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         self.window!.rootViewController = storyboard.instantiateInitialViewController();
+        
+        //4.更新用户的登录状态
+        WCUserInfo.sharedWCUserInfo.loginStatus = false
+        WCUserInfo.sharedWCUserInfo.saveUserInfoToSanbox()
     
     }
 
     ///用户登录
-    func xmppUserLogin(resultBlock:XMPPResultBlock){
+    func xmppUserLogin(resultBlock:XMPPResultBlock?){
         
         // 先把block存起来
         _resultBlock = resultBlock;

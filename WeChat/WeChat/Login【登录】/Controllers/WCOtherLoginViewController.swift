@@ -22,16 +22,12 @@ class WCOtherLoginViewController: UIViewController {
         // 登录
         /*
         * 官方的登录实现
-        * 1.把用户名和密码放在沙盒
+        * 1.把用户名和密码放在WCUserInfo的单例
         * 2.调用 AppDelegate的一个login 连接服务并登录
         */
-        let user: NSString = self.userField.text!;
-        let pwd: NSString  = self.pwdField.text!;
-        
-        let defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(user, forKey: "user")
-        defaults.setObject(pwd, forKey: "pwd")
-        defaults.synchronize()
+        let userInfo: WCUserInfo = WCUserInfo.sharedWCUserInfo
+        userInfo.user = self.userField.text;
+        userInfo.pwd = self.pwdField.text;
         
         //隐藏键盘
         self.view.endEditing(true)
@@ -71,6 +67,12 @@ class WCOtherLoginViewController: UIViewController {
     
     ///结束
     func enterMainPage(){
+        // 更改用户的登录状态为YES
+        WCUserInfo.sharedWCUserInfo.loginStatus = true
+        
+        // 把用户登录成功的数据，保存到沙盒
+        WCUserInfo.sharedWCUserInfo.saveUserInfoToSanbox()
+        
         //MARK: modal出来的模态窗口一定要隐藏不然会强引用
         self.dismissViewControllerAnimated(false, completion: nil)
         // 登录成功来到主界面
