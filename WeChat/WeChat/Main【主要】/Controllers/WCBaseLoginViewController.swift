@@ -18,6 +18,7 @@ class WCBaseLoginViewController: UIViewController {
         self.view.endEditing(true)
         
         // 登录之前给个提示
+        
         MBProgressHUD.showMessage("正在登录中...", toView: self.view)
         
         let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -46,6 +47,8 @@ class WCBaseLoginViewController: UIViewController {
                 
             case XMPPResultType.NetErr:
                 MBProgressHUD.showError("网络不给力", toView:self.view)
+            default: break
+                
             }
         }
     }

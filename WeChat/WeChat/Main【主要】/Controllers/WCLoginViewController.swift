@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WCLoginViewController: WCBaseLoginViewController {
+class WCLoginViewController: WCBaseLoginViewController,WCRegisgerViewControllerDelegate {
 
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var pwdField: UITextField!
@@ -33,10 +33,7 @@ class WCLoginViewController: WCBaseLoginViewController {
         self.pwdField.addLeftViewWithImage("Card_Lock")
         
         self.loginBtn.setla拉升Normal_Highlighted_BG("fts_green_btn", "fts_green_btn_HL")
-        
-        
-        
-        
+
         // 设置用户名为上次登录的用户名
         //从沙盒获取用户名
         let user:String  = WCUserInfo.sharedWCUserInfo.user
@@ -48,6 +45,41 @@ class WCLoginViewController: WCBaseLoginViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // 获取注册控制器
+        let destVc = segue.destinationViewController
+
+        if destVc.isKindOfClass(WCNavigationController.classForCoder()){
+           
+            let nav: WCNavigationController  = destVc as! WCNavigationController
+            if nav.restorationIdentifier != "zhuce"{
+                return
+            }
+            //获取根控制器
+            let registerVc: WCRegisgerViewController  = nav.topViewController as! WCRegisgerViewController
+            // 设置注册控制器的代理
+            registerVc.delegate = self;
+        }
+
+    }
+
+    
+    //MARK: -  regisgerViewController的代理
+    func regisgerViewControllerDidFinishRegister(){
+        print("完成注册");
+        // 完成注册 userLabel显示注册的用户名
+        self.userLabel.text = WCUserInfo.sharedWCUserInfo.registerUser;
+        
+        // 提示
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.6 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            
+            MBProgressHUD.showSuccess("请重新输入密码进行登录", toView:self.view)
+        }
+        
+        
+        
+    }
 
 
 

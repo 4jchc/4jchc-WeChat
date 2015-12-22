@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Mx-SR-7xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1269" y="-281"/>
+            <point key="canvasLocation" x="-2277" y="-405"/>
         </scene>
         <!--登录-->
         <scene sceneID="ZAu-2J-Tgn">
@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bR6-zC-Set" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1198" y="-435"/>
+            <point key="canvasLocation" x="-1210" y="-431"/>
         </scene>
         <!--其他方式登录的Nvg-->
         <scene sceneID="SVj-Xt-86Q">
@@ -252,7 +252,7 @@
         <!--注册的Nvg-->
         <scene sceneID="f8O-ga-YLe">
             <objects>
-                <navigationController title="其他方式登录的Nvg" id="eub-AC-bWw" userLabel="注册的Nvg" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="zhuce" storyboardIdentifier="zhuce" title="其他方式登录的Nvg" id="eub-AC-bWw" userLabel="注册的Nvg" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nwx-Z1-Epg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -291,8 +291,11 @@
                                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textChange:" destination="IV3-bf-Yvv" eventType="editingChanged" id="nDW-Fa-cy2"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjL-wl-2yU">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjL-wl-2yU">
                                         <rect key="frame" x="0.0" y="120" width="400" height="30"/>
                                         <animations/>
                                         <constraints>
@@ -315,6 +318,9 @@
                                         <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textChange:" destination="IV3-bf-Yvv" eventType="editingChanged" id="7bC-8L-lTR"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <animations/>

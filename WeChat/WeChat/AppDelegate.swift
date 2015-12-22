@@ -13,6 +13,9 @@ enum XMPPResultType {
     case LoginFailure//登录失败
     //网络不给力
     case NetErr
+    case RegisterSuccess//注册成功
+    case RegisterFailure//注册失败
+
     
 }
 
@@ -154,7 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     func xmppStreamDidConnect(sender:XMPPStream){
         
         if (registerOperation == true) {//注册操作，发送注册的密码
-            let pwd:String = WCUserInfo.sharedWCUserInfo.registerUser;
+            let pwd:String = WCUserInfo.sharedWCUserInfo.registerPwd  
+            
            try! _xmppStream?.registerWithPassword(pwd)
             
         }else{//登录操作
@@ -206,11 +210,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     //MARK:  注册成功
     func xmppStreamDidRegister(sender: XMPPStream!) {
         print("*****注册成功")
+        // 判断block有无值，再回调给登录控制器
+        if (_resultBlock != nil) {
+            _resultBlock!(type:.RegisterSuccess)
+        }
+
     }
     
     //MARK: 注册失败
     func xmppStream(sender: XMPPStream!, didNotRegister error: DDXMLElement!) {
         print("*****注册失败\(error)")
+        // 判断block有无值，再回调给登录控制器
+        if (_resultBlock != nil) {
+            _resultBlock!(type:.RegisterFailure)
+        }
     }
     //MARK:  -公共方法
     ///用户注销
