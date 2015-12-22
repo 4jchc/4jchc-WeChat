@@ -22,7 +22,7 @@ class WCBaseLoginViewController: UIViewController {
         
         let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
         weak var weakSelf = self
-        
+        app.registerOperation = false
         app.xmppUserLogin({ (type) -> Void in
             
             weakSelf?.handleResultType(type)

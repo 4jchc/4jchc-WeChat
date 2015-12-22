@@ -23,6 +23,11 @@ class WCUserInfo: NSObject {
     
     /** 登录的状态 YES 登录过/NO 注销 */
     var loginStatus:Bool!
+    
+    //注册的用户名
+    var registerUser:String!
+    //注册的密码
+    var registerPwd:String!
  
     
 

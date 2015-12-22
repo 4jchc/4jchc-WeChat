@@ -46,11 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     var _resultBlock:XMPPResultBlock!
 
 
-
-
     var window: UIWindow?
     var _xmppStream: XMPPStream?
     
+    /**
+    *  注册标识 YES 注册 / NO 登录
+    */
+     //注册操作
+    var registerOperation:Bool?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // 程序一启动就连接到主机
@@ -95,7 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         // 设置登录用户JID
         //resource 标识用户登录的客户端 iphone android
         // 从单例获取用户名
-        let user:String  = WCUserInfo.sharedWCUserInfo.user;
+        // 从单例获取用户名
+        var user:String  = WCUserInfo.sharedWCUserInfo.user;
+        if (registerOperation == true) {
+            user = WCUserInfo.sharedWCUserInfo.registerUser;
+        }
 
         let myJID:XMPPJID = XMPPJID.jidWithUser(user, domain: "4jbook-pro.local", resource: "iphone8")
         _xmppStream!.myJID = myJID;
@@ -145,10 +152,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
     //MARK:  XMPPStream的代理
     //MARK:  与主机连接成功
     func xmppStreamDidConnect(sender:XMPPStream){
-        NSLog("与主机连接成功");
         
-        // 主机连接成功后，发送密码进行授权
-        self.sendPwdToHost()
+        if (registerOperation == true) {//注册操作，发送注册的密码
+            let pwd:String = WCUserInfo.sharedWCUserInfo.registerUser;
+           try! _xmppStream?.registerWithPassword(pwd)
+            
+        }else{//登录操作
+            // 主机连接成功后，发送密码进行授权
+            self.sendPwdToHost()
+        }
+        NSLog("与主机连接成功")
+        
+
     }
     
     //MARK:   与主机断开连接
@@ -188,7 +203,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
         }
     }
     
+    //MARK:  注册成功
+    func xmppStreamDidRegister(sender: XMPPStream!) {
+        print("*****注册成功")
+    }
     
+    //MARK: 注册失败
+    func xmppStream(sender: XMPPStream!, didNotRegister error: DDXMLElement!) {
+        print("*****注册失败\(error)")
+    }
     //MARK:  -公共方法
     ///用户注销
     func xmppUserlogout(){
@@ -212,6 +235,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
 
     ///用户登录
     func xmppUserLogin(resultBlock:XMPPResultBlock?){
+        
+        // 先把block存起来
+        _resultBlock = resultBlock;
+        //MARK: 如果以前连接过服务，要断开
+        _xmppStream?.disconnect()
+        // 连接主机 成功后发送密码
+        self.connectToHost()
+    }
+
+    ///用户注册
+    func xmppUserRegister(resultBlock:XMPPResultBlock?){
         
         // 先把block存起来
         _resultBlock = resultBlock;

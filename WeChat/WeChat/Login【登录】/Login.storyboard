@@ -68,6 +68,9 @@
                                         <state key="normal" title="注册">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="eub-AC-bWw" kind="presentation" id="bCw-fc-WHZ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7m-k2-aq7">
                                         <rect key="frame" x="0.0" y="84" width="280" height="21"/>
@@ -144,7 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdH-zA-iK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="-693"/>
+            <point key="canvasLocation" x="-475" y="-935"/>
         </scene>
         <!--其他方式登录-->
         <scene sceneID="XOJ-p3-Rka">
@@ -244,7 +247,124 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMC-gW-rN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="375" y="-703"/>
+            <point key="canvasLocation" x="197" y="-949"/>
+        </scene>
+        <!--注册的Nvg-->
+        <scene sceneID="f8O-ga-YLe">
+            <objects>
+                <navigationController title="其他方式登录的Nvg" id="eub-AC-bWw" userLabel="注册的Nvg" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nwx-Z1-Epg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IV3-bf-Yvv" kind="relationship" relationship="rootViewController" id="RLO-us-eCw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sQK-lY-I88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-467" y="-243"/>
+        </scene>
+        <!--注册-->
+        <scene sceneID="cqL-Iu-iPr">
+            <objects>
+                <viewController title="其他方式登录" id="IV3-bf-Yvv" userLabel="注册" customClass="WCRegisgerViewController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="im6-Hf-c4l"/>
+                        <viewControllerLayoutGuide type="bottom" id="9oo-A8-eDm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5ix-93-bEj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7j2-1T-sWn" userLabel="其他方式登录">
+                                <rect key="frame" x="100" y="129" width="400" height="200"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAM-it-wkr">
+                                        <rect key="frame" x="0.0" y="65" width="400" height="40"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.28709712570000001" green="0.87628235480000005" blue="0.1084342292" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qwo-DQ-Tf9"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjL-wl-2yU">
+                                        <rect key="frame" x="0.0" y="120" width="400" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="kGe-4B-uJz"/>
+                                        </constraints>
+                                        <state key="normal" title="注册">
+                                            <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerBtnClick:" destination="IV3-bf-Yvv" eventType="touchUpInside" id="2VG-H9-51t"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码 " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TO2-0S-d2o">
+                                        <rect key="frame" x="0.0" y="15" width="400" height="42"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.12549019610000001" green="0.74901960779999999" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="hxt-5B-tCr"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gAM-it-wkr" firstAttribute="top" secondItem="TO2-0S-d2o" secondAttribute="bottom" constant="8" id="3I8-3A-GKn"/>
+                                    <constraint firstItem="gAM-it-wkr" firstAttribute="leading" secondItem="7j2-1T-sWn" secondAttribute="leading" id="5Rn-3o-ZER"/>
+                                    <constraint firstItem="gjL-wl-2yU" firstAttribute="top" secondItem="gAM-it-wkr" secondAttribute="bottom" constant="15" id="6xw-2G-4Y4"/>
+                                    <constraint firstItem="gjL-wl-2yU" firstAttribute="leading" secondItem="7j2-1T-sWn" secondAttribute="leading" id="7wh-Wg-Gvj"/>
+                                    <constraint firstAttribute="trailing" secondItem="gjL-wl-2yU" secondAttribute="trailing" id="bNy-1A-7nl"/>
+                                    <constraint firstItem="TO2-0S-d2o" firstAttribute="leading" secondItem="7j2-1T-sWn" secondAttribute="leading" id="d4i-UQ-nSI"/>
+                                    <constraint firstAttribute="height" constant="200" id="f7O-Uu-5oq"/>
+                                    <constraint firstAttribute="width" constant="400" id="k4Y-0N-4el"/>
+                                    <constraint firstItem="TO2-0S-d2o" firstAttribute="top" secondItem="7j2-1T-sWn" secondAttribute="top" constant="15" id="lDl-3L-hEB"/>
+                                    <constraint firstAttribute="trailing" secondItem="gAM-it-wkr" secondAttribute="trailing" id="lU2-Cd-BPv"/>
+                                    <constraint firstAttribute="trailing" secondItem="TO2-0S-d2o" secondAttribute="trailing" id="tPA-Cu-s6F"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="k4Y-0N-4el"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="7j2-1T-sWn" secondAttribute="trailing" constant="80" identifier="id13" id="FLG-px-KQz"/>
+                            <constraint firstItem="7j2-1T-sWn" firstAttribute="leading" secondItem="5ix-93-bEj" secondAttribute="leadingMargin" constant="80" identifier="id12" id="GQj-bb-RYa"/>
+                            <constraint firstItem="7j2-1T-sWn" firstAttribute="top" secondItem="im6-Hf-c4l" secondAttribute="bottom" constant="65" identifier="id10" id="Hgj-C9-Hvc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jEx-p5-O6z">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="vDQ-KZ-Kq7">
+                            <connections>
+                                <action selector="cancel:" destination="IV3-bf-Yvv" id="r4O-JV-u4b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftConstraint" destination="GQj-bb-RYa" id="lrY-Hf-LSU"/>
+                        <outlet property="pwdField" destination="gAM-it-wkr" id="8kM-IE-PQm"/>
+                        <outlet property="registerBtn" destination="gjL-wl-2yU" id="kUh-Jz-gR3"/>
+                        <outlet property="rightConstraint" destination="FLG-px-KQz" id="Ji9-wt-Ybf"/>
+                        <outlet property="userField" destination="TO2-0S-d2o" id="TGz-Iw-9cH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sN9-Rn-8wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="-255"/>
         </scene>
     </scenes>
     <resources>

@@ -15,4 +15,83 @@ extension NSLayoutConstraint {
         let id = identifier ?? ""
         return "id: \(id), constant: \(constant)" //you may print whatever you want here
     }
+    
+    
+    func setAsSeparator() {
+        self.constant = 1.0 / UIScreen.mainScreen().scale
+    }
+    
+    class func constraintsToFillSuperview(view: UIView) -> [NSLayoutConstraint]{
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        var constraints: [NSLayoutConstraint] = []
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["v" : view])
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["v" : view])
+        
+        return constraints
+    }
+    //MARK: - 建立约束数组
+    public class func constraintsWithVisualFormatArray(array: [String], metrics: [String: AnyObject]?, views: [String: AnyObject]) -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        for rule in array {
+            constraints.appendContentsOf(self.constraintsWithVisualFormat(rule,
+                options: .DirectionLeadingToTrailing,
+                metrics: metrics,
+                views: views) )
+        }
+        
+        return constraints
+    }
+    /// 建立约束数组
+    ///
+    /// - parameter formats: VLF 数组
+    /// - parameter views:   views 字典
+    ///
+    /// - returns: 约束数组
+    class func constraints(formats: [String], views: [String: AnyObject]) -> [NSLayoutConstraint] {
+        
+        var cons = [NSLayoutConstraint]()
+        
+        for format in formats {
+            cons += NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: nil, views: views)
+        }
+        
+        return cons
+    }
+    
+    
+    public func activate() {
+        NSLayoutConstraint.activateConstraints([self])
+    }
+    
+    public func deactivate() {
+        NSLayoutConstraint.deactivateConstraints([self])
+    }
+    
+    
+    @available(iOS 8.0, *)
+    func setMultiplier(multiplier:CGFloat) {
+        
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+        
+        newConstraint.priority = self.priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+        newConstraint.active = self.active
+        
+        NSLayoutConstraint.deactivateConstraints([self])
+        NSLayoutConstraint.activateConstraints([newConstraint])
+    }
+    
+    class func simpleConstrain(format: String, views vws: NSDictionary) -> [AnyObject] {
+        
+        return NSLayoutConstraint.constraintsWithVisualFormat(format, options: NSLayoutFormatOptions(), metrics: nil, views: vws as! [String : AnyObject])
+    }
 }

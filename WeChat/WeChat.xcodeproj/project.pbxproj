@@ -13,6 +13,8 @@
 		960D8BAA1C29356D0099E13A /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BA91C29356D0099E13A /* UITextView+Extension.swift */; };
 		960D8BAC1C29374B0099E13A /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BAB1C29374B0099E13A /* UITextField+Extension.swift */; };
 		960D8BAE1C2943F40099E13A /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BAD1C2943F40099E13A /* NSLayoutConstraint+Extension.swift */; };
+		960D8BB01C294C310099E13A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BAF1C294C310099E13A /* Double+Extension.swift */; };
+		960D8BB21C2956100099E13A /* WCRegisgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */; };
 		967A7EDC1C27D40900772D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDB1C27D40900772D90 /* AppDelegate.swift */; };
 		967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDD1C27D40900772D90 /* ViewController.swift */; };
 		967A7EE11C27D40900772D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A7EDF1C27D40900772D90 /* Main.storyboard */; };
@@ -188,6 +190,8 @@
 		960D8BA91C29356D0099E13A /* UITextView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UITextView+Extension.swift"; sourceTree = "<group>"; };
 		960D8BAB1C29374B0099E13A /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		960D8BAD1C2943F40099E13A /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
+		960D8BAF1C294C310099E13A /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCRegisgerViewController.swift; sourceTree = "<group>"; };
 		967A7ED81C27D40900772D90 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967A7EDB1C27D40900772D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967A7EDD1C27D40900772D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1395,6 +1399,7 @@
 			children = (
 				967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */,
 				960D8BA11C2920410099E13A /* WCLoginViewController.swift */,
+				960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */,
 				960D8BA31C29206C0099E13A /* WCBaseLoginViewController.swift */,
 			);
 			path = Controllers;
@@ -1404,6 +1409,7 @@
 			isa = PBXGroup;
 			children = (
 				960D8BA91C29356D0099E13A /* UITextView+Extension.swift */,
+				960D8BAF1C294C310099E13A /* Double+Extension.swift */,
 				960D8BAD1C2943F40099E13A /* NSLayoutConstraint+Extension.swift */,
 				960D8BAB1C29374B0099E13A /* UITextField+Extension.swift */,
 				967A80E51C2800DC00772D90 /* UIImage+Extension.swift */,
@@ -1629,6 +1635,7 @@
 				967A808F1C27D45D00772D90 /* XMPPvCardCoreDataStorage.m in Sources */,
 				967A80E31C27F79C00772D90 /* WCOtherLoginViewController.swift in Sources */,
 				967A80751C27D45D00772D90 /* XMPPRosterMemoryStorage.m in Sources */,
+				960D8BB01C294C310099E13A /* Double+Extension.swift in Sources */,
 				967A80921C27D45D00772D90 /* XMPPvCardTemp.m in Sources */,
 				967A80AF1C27D45D00772D90 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				967A80AD1C27D45D00772D90 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
@@ -1712,6 +1719,7 @@
 				967A80E61C2800DC00772D90 /* UIImage+Extension.swift in Sources */,
 				967A80CB1C27D45D00772D90 /* DDASLLogger.m in Sources */,
 				967A80A51C27D45D00772D90 /* XMPPTransports.m in Sources */,
+				960D8BB21C2956100099E13A /* WCRegisgerViewController.swift in Sources */,
 				967A80B61C27D45D00772D90 /* XMPPBlocking.m in Sources */,
 				967A80C21C27D45D00772D90 /* NSXMLElement+XEP_0335.m in Sources */,
 				967A80B01C27D45D00772D90 /* XMPPMessageArchiving.m in Sources */,
