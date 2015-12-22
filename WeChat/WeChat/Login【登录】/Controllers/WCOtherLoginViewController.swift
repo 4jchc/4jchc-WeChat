@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WCOtherLoginViewController: UIViewController {
+class WCOtherLoginViewController: WCBaseLoginViewController {
 
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
 
@@ -28,76 +28,19 @@ class WCOtherLoginViewController: UIViewController {
         let userInfo: WCUserInfo = WCUserInfo.sharedWCUserInfo
         userInfo.user = self.userField.text;
         userInfo.pwd = self.pwdField.text;
-        
-        //隐藏键盘
-        self.view.endEditing(true)
-        
-        // 登录之前给个提示
-        MBProgressHUD.showMessage("正在登录中...", toView: self.view)
-    
-        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
-            weak var weakSelf = self
-        
-            app.xmppUserLogin({ (type) -> Void in
-                
-                weakSelf?.handleResultType(type)
-                
-            })   
+        //调用父类的方法
+        login()
     }
     
 
-    func handleResultType(type:XMPPResultType){
-        // 主线程刷新UI
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            switch (type) {
-            case XMPPResultType.LoginSuccess:
-                NSLog("登录成功");
-                self.enterMainPage()
- 
-            case XMPPResultType.LoginFailure:
-                NSLog("登录失败");
-                MBProgressHUD.showError("用户名或者密码不正确", toView:self.view)
-                
-            case XMPPResultType.NetErr:
-                MBProgressHUD.showError("网络不给力", toView:self.view)
-            }
-        }
-    }
-    
-    ///结束
-    func enterMainPage(){
-        // 更改用户的登录状态为YES
-        WCUserInfo.sharedWCUserInfo.loginStatus = true
-        
-        // 把用户登录成功的数据，保存到沙盒
-        WCUserInfo.sharedWCUserInfo.saveUserInfoToSanbox()
-        
-        //MARK: modal出来的模态窗口一定要隐藏不然会强引用
-        self.dismissViewControllerAnimated(false, completion: nil)
-        // 登录成功来到主界面
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        self.view.window!.rootViewController = storyboard.instantiateInitialViewController();
 
-    }
-    
 
     @IBAction func cancel(sender: UIBarButtonItem) {
   
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    deinit{
 
-        print("*销毁*\(__FUNCTION__) \(super.classForCoder)")
-    }
-
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

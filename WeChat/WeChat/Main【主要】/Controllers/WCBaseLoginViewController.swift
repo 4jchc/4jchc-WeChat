@@ -9,85 +9,79 @@
 import UIKit
 
 class WCBaseLoginViewController: UIViewController {
-
-//    
-//    func login(){
-//    // 登录
-//    
-//
-//    
-//    //隐藏键盘
-//    [self.view endEditing:YES];
-//    
-//    // 登录之前给个提示
-//    
-//    [MBProgressHUD showMessage:@"正在登录中..." toView:self.view];
-//    
-//    [WCXMPPTool sharedWCXMPPTool].registerOperation = NO;
-//    __weak typeof(self) selfVc = self;
-//    
-//    [[WCXMPPTool sharedWCXMPPTool] xmppUserLogin:^(XMPPResultType type) {
-//    [selfVc handleResultType:type];
-//    }];
-//        
-//        
-//        
-//        // 登录
-//        /*
-//        * 官方的登录实现
-//        * 1.把用户名和密码放在WCUserInfo的单例
-//        * 2.调用 AppDelegate的一个login 连接服务并登录
-//        */
-//        let user: NSString = self.userField.text!;
-//        let pwd: NSString  = self.pwdField.text!;
-//        
-//        let defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-//        defaults.setObject(user, forKey: "user")
-//        defaults.setObject(pwd, forKey: "pwd")
-//        defaults.synchronize()
-//        
-//        //隐藏键盘
-//        self.view.endEditing(true)
-//        
-//        // 登录之前给个提示
-//        MBProgressHUD.showMessage("正在登录中...", toView: self.view)
-//        
-//        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
-//        weak var weakSelf = self
-//        
-//        app.xmppUserLogin({ (type) -> Void in
-//            
-//            weakSelf?.handleResultType(type)
-//            
-//        })
-//    }
-//    }
-//
-//
-//
-
-
     
+
+    ///供子类调用
+    func login(){
+        
+        //隐藏键盘
+        self.view.endEditing(true)
+        
+        // 登录之前给个提示
+        MBProgressHUD.showMessage("正在登录中...", toView: self.view)
+        
+        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
+        weak var weakSelf = self
+        
+        app.xmppUserLogin({ (type) -> Void in
+            
+            weakSelf?.handleResultType(type)
+            
+        })
+    }
+    
+    
+    func handleResultType(type:XMPPResultType){
+        // 主线程刷新UI
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            switch (type) {
+            case XMPPResultType.LoginSuccess:
+                NSLog("登录成功");
+                self.enterMainPage()
+                
+            case XMPPResultType.LoginFailure:
+                NSLog("登录失败");
+                MBProgressHUD.showError("用户名或者密码不正确", toView:self.view)
+                
+            case XMPPResultType.NetErr:
+                MBProgressHUD.showError("网络不给力", toView:self.view)
+            }
+        }
+    }
+    
+    ///结束
+    func enterMainPage(){
+        // 更改用户的登录状态为YES
+        WCUserInfo.sharedWCUserInfo.loginStatus = true
+        
+        // 把用户登录成功的数据，保存到沙盒
+        WCUserInfo.sharedWCUserInfo.saveUserInfoToSanbox()
+        
+        //MARK: modal出来的模态窗口一定要隐藏不然会强引用
+        self.dismissViewControllerAnimated(false, completion: nil)
+        // 登录成功来到主界面
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        self.view.window!.rootViewController = storyboard.instantiateInitialViewController();
+        
+    }
+    
+    
+    deinit{
+        
+        print("*销毁*\(__FUNCTION__) \(super.classForCoder)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

@@ -17,12 +17,27 @@ class WCLoginViewController: WCBaseLoginViewController {
     
     @IBAction func loginBtnClick(sender: UIButton) {
         
+        // 保存数据到单例
+        let userInfo: WCUserInfo = WCUserInfo.sharedWCUserInfo
+        userInfo.user = self.userLabel.text;
+        userInfo.pwd = self.pwdField.text;
+        
+        // 调用父类的登录
+        super.login()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // 设置用户名为上次登录的用户名
+        // 设置TextField和Btn的样式
+        self.pwdField.background = UIImage.stretchedImageWithName("operationbox_text")
+        self.pwdField.addLeftViewWithImage("Card_Lock")
         
+        self.loginBtn.setla拉升Normal_Highlighted_BG("fts_green_btn", "fts_green_btn_HL")
+        
+        
+        
+        
+        // 设置用户名为上次登录的用户名
         //从沙盒获取用户名
         let user:String  = WCUserInfo.sharedWCUserInfo.user
         self.userLabel.text = user;
@@ -34,14 +49,6 @@ class WCLoginViewController: WCBaseLoginViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

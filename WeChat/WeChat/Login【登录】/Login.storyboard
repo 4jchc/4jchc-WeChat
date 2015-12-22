@@ -69,7 +69,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7m-k2-aq7">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7m-k2-aq7">
                                         <rect key="frame" x="0.0" y="84" width="280" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -80,36 +80,42 @@
                                         <rect key="frame" x="106" y="8" width="68" height="68"/>
                                         <animations/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTV-V8-rms">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTV-V8-rms">
                                         <rect key="frame" x="0.0" y="110" width="280" height="30"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-6V-SpV">
+                                        <rect key="frame" x="125" y="155" width="30" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="bXl-s7-72c"/>
+                                            <constraint firstAttribute="height" constant="30" id="rqi-Kc-Vgs"/>
+                                        </constraints>
+                                        <state key="normal" title="登录"/>
+                                        <connections>
+                                            <action selector="loginBtnClick:" destination="VD8-5g-4yS" eventType="touchUpInside" id="ESa-JX-G50"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="FHu-m1-5tx"/>
-                                    <constraint firstAttribute="width" constant="280" id="imc-GX-BXr"/>
+                                    <constraint firstAttribute="height" constant="250" identifier="id1" id="FHu-m1-5tx"/>
+                                    <constraint firstItem="7SM-6V-SpV" firstAttribute="centerX" secondItem="QEZ-bi-KBN" secondAttribute="centerX" identifier="id3" id="hQ6-be-f0H"/>
+                                    <constraint firstAttribute="width" constant="280" identifier="id2" id="imc-GX-BXr"/>
+                                    <constraint firstItem="7SM-6V-SpV" firstAttribute="top" secondItem="QEZ-bi-KBN" secondAttribute="top" constant="155" identifier="id4" id="p37-z8-Mrw"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-6V-SpV">
-                                <rect key="frame" x="285" y="285" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="登录"/>
-                                <connections>
-                                    <action selector="loginBtnClick:" destination="VD8-5g-4yS" eventType="touchUpInside" id="ESa-JX-G50"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hrF-jK-gOs" firstAttribute="top" secondItem="ZuJ-jb-7UW" secondAttribute="bottom" constant="50" id="5Vs-cT-8Iv"/>
-                            <constraint firstItem="QEZ-bi-KBN" firstAttribute="top" secondItem="WQ6-Qj-8jH" secondAttribute="bottom" constant="73" id="UC4-6l-Tli"/>
-                            <constraint firstItem="QEZ-bi-KBN" firstAttribute="centerX" secondItem="ud7-tS-Lgw" secondAttribute="centerX" id="hnN-zj-uZE"/>
-                            <constraint firstItem="ZuJ-jb-7UW" firstAttribute="centerX" secondItem="ud7-tS-Lgw" secondAttribute="centerX" id="k35-AD-qXz"/>
+                            <constraint firstItem="hrF-jK-gOs" firstAttribute="top" secondItem="ZuJ-jb-7UW" secondAttribute="bottom" constant="50" identifier="id8" id="5Vs-cT-8Iv"/>
+                            <constraint firstItem="QEZ-bi-KBN" firstAttribute="top" secondItem="WQ6-Qj-8jH" secondAttribute="bottom" constant="73" identifier="id5" id="UC4-6l-Tli"/>
+                            <constraint firstItem="QEZ-bi-KBN" firstAttribute="centerX" secondItem="ud7-tS-Lgw" secondAttribute="centerX" identifier="id6" id="hnN-zj-uZE"/>
+                            <constraint firstItem="ZuJ-jb-7UW" firstAttribute="centerX" secondItem="ud7-tS-Lgw" secondAttribute="centerX" identifier="id7" id="k35-AD-qXz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="登录" id="N8U-Fb-vsz"/>
@@ -121,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bR6-zC-Set" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1074" y="-281"/>
+            <point key="canvasLocation" x="-1198" y="-435"/>
         </scene>
         <!--其他方式登录的Nvg-->
         <scene sceneID="SVj-Xt-86Q">
@@ -206,15 +212,19 @@
                                     <constraint firstItem="BOJ-hw-vjn" firstAttribute="top" secondItem="63H-FB-uYo" secondAttribute="bottom" constant="15" id="r8k-JQ-Vpv"/>
                                     <constraint firstAttribute="height" constant="200" id="vWd-OA-drM"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0fX-Cu-y6K"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gTQ-fG-7kB" firstAttribute="top" secondItem="uG7-mw-qFk" secondAttribute="bottom" constant="65" id="16w-CV-Oct"/>
-                            <constraint firstItem="gTQ-fG-7kB" firstAttribute="centerX" secondItem="wy5-Xn-vPb" secondAttribute="centerX" id="FE1-Pa-Z5s"/>
-                            <constraint firstItem="gTQ-fG-7kB" firstAttribute="leading" secondItem="wy5-Xn-vPb" secondAttribute="leadingMargin" constant="80" id="flI-G2-9bD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gTQ-fG-7kB" secondAttribute="trailing" constant="80" id="tuK-DB-JIc"/>
+                            <constraint firstItem="gTQ-fG-7kB" firstAttribute="top" secondItem="uG7-mw-qFk" secondAttribute="bottom" constant="65" identifier="id10" id="16w-CV-Oct"/>
+                            <constraint firstItem="gTQ-fG-7kB" firstAttribute="leading" secondItem="wy5-Xn-vPb" secondAttribute="leadingMargin" constant="80" identifier="id12" id="flI-G2-9bD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gTQ-fG-7kB" secondAttribute="trailing" constant="80" identifier="id13" id="tuK-DB-JIc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dqp-ld-fby">

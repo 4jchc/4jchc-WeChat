@@ -30,9 +30,14 @@ class WCNavigationController: UINavigationController {
         // xcode5以上，创建的项目，默认的话，这个状态栏的样式由控制器决定
         //MARK:配合plist文件设置--全局--状态栏样式
         //在plis文件中加入View controller-based status bar appearance.就不用每一个都设置了
+        //ios9.0不支持还是要每一个导航控制器都要设置此
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
        
         
+    }
+    override func setNeedsStatusBarAppearanceUpdate() {
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     //MARK: - 单独设置状态栏的样式
     //// 如果控制器是由导航控制管理，设置状态栏的样式时，要在导航控制器里设置
