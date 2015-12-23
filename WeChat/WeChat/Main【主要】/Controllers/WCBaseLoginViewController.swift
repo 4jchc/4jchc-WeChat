@@ -70,8 +70,7 @@ class WCBaseLoginViewController: UIViewController {
     
     
     deinit{
-        
-        print("*销毁*\(__FUNCTION__) \(super.classForCoder)")
+        print("**\(super.classForCoder)--已销毁")
     }
     override func viewDidLoad() {
         super.viewDidLoad()

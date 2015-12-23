@@ -16,6 +16,9 @@
 		960D8BB21C2956100099E13A /* WCRegisgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */; };
 		965379571C2A3B9300DC3E3D /* WCXMPPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379561C2A3B9300DC3E3D /* WCXMPPTool.swift */; };
 		965379591C2A3DC200DC3E3D /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379581C2A3DC200DC3E3D /* UIStoryboard.swift */; };
+		9653795B1C2A9B3900DC3E3D /* WCProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */; };
+		9653795D1C2AA26C00DC3E3D /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */; };
+		9653795F1C2AA32000DC3E3D /* UIViewController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */; };
 		967A7EDC1C27D40900772D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDB1C27D40900772D90 /* AppDelegate.swift */; };
 		967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDD1C27D40900772D90 /* ViewController.swift */; };
 		967A7EE11C27D40900772D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A7EDF1C27D40900772D90 /* Main.storyboard */; };
@@ -194,6 +197,9 @@
 		960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCRegisgerViewController.swift; sourceTree = "<group>"; };
 		965379561C2A3B9300DC3E3D /* WCXMPPTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCXMPPTool.swift; sourceTree = "<group>"; };
 		965379581C2A3DC200DC3E3D /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCProfileViewController.swift; sourceTree = "<group>"; };
+		9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController +Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIViewController +Extension.swift"; sourceTree = "<group>"; };
 		967A7ED81C27D40900772D90 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967A7EDB1C27D40900772D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967A7EDD1C27D40900772D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1411,7 +1417,9 @@
 		967A80E41C2800AF00772D90 /* CategoryTool【扩展】 */ = {
 			isa = PBXGroup;
 			children = (
+				9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */,
 				960D8BA91C29356D0099E13A /* UITextView+Extension.swift */,
+				9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */,
 				960D8BAD1C2943F40099E13A /* NSLayoutConstraint+Extension.swift */,
 				960D8BAB1C29374B0099E13A /* UITextField+Extension.swift */,
 				967A80E51C2800DC00772D90 /* UIImage+Extension.swift */,
@@ -1466,6 +1474,7 @@
 			isa = PBXGroup;
 			children = (
 				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
+				9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1701,7 +1710,9 @@
 				967A805E1C27D45D00772D90 /* XMPPXOAuth2Google.m in Sources */,
 				960D8BA71C2926400099E13A /* WCUserInfo.swift in Sources */,
 				967A80621C27D45D00772D90 /* XMPPElement.m in Sources */,
+				9653795B1C2A9B3900DC3E3D /* WCProfileViewController.swift in Sources */,
 				967A80BC1C27D45D00772D90 /* XEP_0223.m in Sources */,
+				9653795F1C2AA32000DC3E3D /* UIViewController +Extension.swift in Sources */,
 				967A80AE1C27D45D00772D90 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
 				967A808E1C27D45D00772D90 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				960D8BA21C2920410099E13A /* WCLoginViewController.swift in Sources */,
@@ -1722,6 +1733,7 @@
 				967A80591C27D45D00772D90 /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				967A80C61C27D45D00772D90 /* XMPPIDTracker.m in Sources */,
 				967A80E61C2800DC00772D90 /* UIImage+Extension.swift in Sources */,
+				9653795D1C2AA26C00DC3E3D /* UIAlertController+Extension.swift in Sources */,
 				967A80CB1C27D45D00772D90 /* DDASLLogger.m in Sources */,
 				967A80A51C27D45D00772D90 /* XMPPTransports.m in Sources */,
 				960D8BB21C2956100099E13A /* WCRegisgerViewController.swift in Sources */,

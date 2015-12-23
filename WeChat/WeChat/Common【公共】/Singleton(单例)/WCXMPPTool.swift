@@ -39,7 +39,16 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     
     //单例
     static let sharedWCXMPPTool = WCXMPPTool()
+    
+    //电子名片
+    var vCard: XMPPvCardTempModule!
+    //电子名片的数据存储
+    var _vCardStorage: XMPPvCardCoreDataStorage!
+    //头像模块
+    var _avatar: XMPPvCardAvatarModule!
 
+ 
+    
     ///定义闭包// XMPP请求结果的block
     typealias XMPPResultBlock = (type:XMPPResultType) -> Void
     ///初始化闭包
@@ -55,6 +64,19 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     func setupXMPPStream(){
         
         _xmppStream = XMPPStream()
+        //MARK: 每一个模块添加后都要激活
+        //添加电子名片模块
+        _vCardStorage = XMPPvCardCoreDataStorage.sharedInstance()
+        vCard = XMPPvCardTempModule.init(withvCardStorage: _vCardStorage)
+       
+        
+        //激活
+        vCard.activate(_xmppStream)
+        
+        //添加头像模块
+        _avatar = XMPPvCardAvatarModule.init(withvCardTempModule: vCard)
+        _avatar.activate(_xmppStream)
+        
         // 设置代理
         _xmppStream!.addDelegate(self, delegateQueue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         

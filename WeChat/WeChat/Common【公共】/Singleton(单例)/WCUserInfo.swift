@@ -35,8 +35,8 @@ class WCUserInfo: NSObject {
     func loadUserInfoFromSanbox(){
         
         let defaults: NSUserDefaults  = NSUserDefaults.standardUserDefaults()
-        self.user = defaults.objectForKey(UserKey) as! String
-        self.pwd = defaults.objectForKey(PwdKey) as! String
+        self.user = defaults.objectForKey(UserKey) as? String
+        self.pwd = defaults.objectForKey(PwdKey) as? String
         self.loginStatus = defaults.boolForKey(LoginStatusKey)
     }
 

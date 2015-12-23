@@ -36,7 +36,7 @@ class WCLoginViewController: WCBaseLoginViewController,WCRegisgerViewControllerD
 
         // 设置用户名为上次登录的用户名
         //从沙盒获取用户名
-        let user:String  = WCUserInfo.sharedWCUserInfo.user
+        let user:String?  = WCUserInfo.sharedWCUserInfo.user
         self.userLabel.text = user;
     }
 
@@ -55,10 +55,13 @@ class WCLoginViewController: WCBaseLoginViewController,WCRegisgerViewControllerD
             if nav.restorationIdentifier != "zhuce"{
                 return
             }
-            //获取根控制器
-            let registerVc: WCRegisgerViewController  = nav.topViewController as! WCRegisgerViewController
-            // 设置注册控制器的代理
-            registerVc.delegate = self;
+            if ((nav.topViewController?.isKindOfClass(WCRegisgerViewController.classForCoder())) == true){
+                //获取根控制器
+                let registerVc: WCRegisgerViewController  = nav.topViewController as! WCRegisgerViewController
+                // 设置注册控制器的代理
+                registerVc.delegate = self;
+            }
+
         }
 
     }

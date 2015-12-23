@@ -21,6 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // 沙盒的路径
+        let documentPaths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
+            NSSearchPathDomainMask.UserDomainMask, true).last
+
+        NSLog("%@",documentPaths!)
+        
+        // 打开XMPP的日志
+        DDLog.addLogger(DDTTYLogger.sharedInstance())
+
+        
+        
+        
         // 程序一启动就连接到主机
         //self.connectToHost()
         // 设置导航栏背景
