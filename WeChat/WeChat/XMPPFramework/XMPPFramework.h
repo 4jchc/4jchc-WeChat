@@ -24,6 +24,9 @@
 
 #import "XMPP.h"
 
+// 自动连接模块
+#import "XMPPReconnect.h"
+
 
 // 电子名片模块
 #import "XMPPvCardTempModule.h"

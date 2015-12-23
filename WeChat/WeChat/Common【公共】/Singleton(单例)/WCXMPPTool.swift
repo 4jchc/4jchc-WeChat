@@ -27,23 +27,31 @@ enum XMPPResultType {
 */
 
 //// 1. 初始化XMPPStream
-//-(void)setupXMPPStream;
+//-(void)setupXMPPStream
 //// 2.连接到服务器
-//-(void)connectToHost;
+//-(void)connectToHost
 //// 3.连接到服务成功后，再发送密码授权
-//-(void)sendPwdToHost;
+//-(void)sendPwdToHost
 //// 4.授权成功后，发送"在线" 消息
-//-(void)sendOnlineToHost;
+//-(void)sendOnlineToHost
 //MARK: - 枚举
 class WCXMPPTool: NSObject,XMPPStreamDelegate {
     
     //单例
     static let sharedWCXMPPTool = WCXMPPTool()
+    // 自动连接模块
+    lazy var _reconnect:XMPPReconnect? = {
+        
+        let ani = XMPPReconnect()
+        
+        return ani
+    }()
     
     //电子名片
     var vCard: XMPPvCardTempModule!
+    
     //电子名片的数据存储
-    var _vCardStorage: XMPPvCardCoreDataStorage!
+    var vCardStorage: XMPPvCardCoreDataStorage!
     //头像模块
     var _avatar: XMPPvCardAvatarModule!
 
@@ -53,7 +61,8 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     typealias XMPPResultBlock = (type:XMPPResultType) -> Void
     ///初始化闭包
     var _resultBlock:XMPPResultBlock!
-    var _xmppStream: XMPPStream?
+
+   var _xmppStream: XMPPStream?
     
     //注册操作YES 注册 / NO 登录
     var registerOperation:Bool?
@@ -65,9 +74,13 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         
         _xmppStream = XMPPStream()
         //MARK: 每一个模块添加后都要激活
+        
+        //添加自动连接模块
+        _reconnect!.activate(_xmppStream)
+        
         //添加电子名片模块
-        _vCardStorage = XMPPvCardCoreDataStorage.sharedInstance()
-        vCard = XMPPvCardTempModule.init(withvCardStorage: _vCardStorage)
+        vCardStorage = XMPPvCardCoreDataStorage.sharedInstance()
+        vCard = XMPPvCardTempModule.init(withvCardStorage: vCardStorage)
        
         
         //激活
@@ -82,9 +95,34 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         
     }
     
+    //MARK: - 释放xmppStream相关的资源
+    ///释放xmppStream相关的资源
+    func teardownXmpp(){
+        
+        // 移除代理
+        _xmppStream!.removeDelegate(self)
+        
+        // 停止模块
+        _reconnect!.deactivate()
+        vCard.deactivate()
+        _avatar!.deactivate()
+        
+        // 断开连接
+        _xmppStream!.disconnect()
+        
+        // 清空资源
+        _reconnect = nil
+        vCard = nil
+        vCardStorage = nil
+        _avatar = nil
+        _xmppStream = nil
+        
+    }
+    
+    
     //MARK:  连接到服务器
     func connectToHost(){
-        NSLog("开始连接到服务器");
+        NSLog("开始连接到服务器")
         if (_xmppStream == nil) {
             self.setupXMPPStream()
         }
@@ -94,18 +132,18 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         //resource 标识用户登录的客户端 iphone android
         // 从单例获取用户名
         // 从单例获取用户名
-        var user:String  = WCUserInfo.sharedWCUserInfo.user;
+        var user:String  = WCUserInfo.sharedWCUserInfo.user
         if (registerOperation == true) {
-            user = WCUserInfo.sharedWCUserInfo.registerUser;
+            user = WCUserInfo.sharedWCUserInfo.registerUser
         }
         
         let myJID:XMPPJID = XMPPJID.jidWithUser(user, domain: "4jbook-pro.local", resource: "iphone8")
-        _xmppStream!.myJID = myJID;
+        _xmppStream!.myJID = myJID
         // 设置服务器域名
-        _xmppStream!.hostName = "4jbook-pro.local";//不仅可以是域名，还可是IP地址
+        _xmppStream!.hostName = "4jbook-pro.local"//不仅可以是域名，还可是IP地址
         
         // 设置端口 如果服务器端口是5222，可以省略
-        _xmppStream!.hostPort = 5222;
+        _xmppStream!.hostPort = 5222
         
         // 连接
         //发起连接
@@ -121,10 +159,10 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     
     //MARK:  连接到服务成功后，再发送密码授权
     func sendPwdToHost(){
-        NSLog("再发送密码授权");
+        NSLog("再发送密码授权")
         // 从沙盒里获取密码
         // 从单例获取用户名
-        let pwd:String  = WCUserInfo.sharedWCUserInfo.pwd;
+        let pwd:String  = WCUserInfo.sharedWCUserInfo.pwd
         do {
             try _xmppStream!.authenticateWithPassword(pwd)
             print("发送密码成功")
@@ -136,9 +174,9 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     //MARK:   授权成功后，发送"在线" 消息
     func sendOnlineToHost(){
         
-        NSLog("发送 在线 消息");
+        NSLog("发送 在线 消息")
         let presence: XMPPPresence  = XMPPPresence()
-        NSLog("%@",presence);
+        NSLog("%@",presence)
         
         _xmppStream?.sendElement(presence)
         
@@ -177,7 +215,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     
     //MARK:  授权成功
     func xmppStreamDidAuthenticate(sender: XMPPStream!) {
-        NSLog("授权成功");
+        NSLog("授权成功")
         // 主机连接成功后，发送密码进行授权
         self.sendOnlineToHost()
         // 回调控制器登录成功
@@ -192,7 +230,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     //MARK:  授权失败
     func xmppStream(sender: XMPPStream!, didNotAuthenticate error: DDXMLElement!) {
         
-        NSLog("授权失败 %@",error);
+        NSLog("授权失败 %@",error)
         // 判断block有无值，再回调给登录控制器
         if (_resultBlock != nil) {
             _resultBlock!(type: .LoginFailure)
@@ -242,7 +280,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     func xmppUserLogin(resultBlock:XMPPResultBlock?){
         
         // 先把block存起来
-        _resultBlock = resultBlock;
+        _resultBlock = resultBlock
         //MARK: 如果以前连接过服务，要断开
         _xmppStream?.disconnect()
         // 连接主机 成功后发送密码
@@ -253,12 +291,16 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     func xmppUserRegister(resultBlock:XMPPResultBlock?){
         
         // 先把block存起来
-        _resultBlock = resultBlock;
+        _resultBlock = resultBlock
         //MARK: 如果以前连接过服务，要断开
         _xmppStream?.disconnect()
         // 连接主机 成功后发送密码
         self.connectToHost()
     }
-
+    
+    deinit{
+        self.teardownXmpp()
+        print("**\(super.classForCoder)--已销毁")
+    }
 
 }
