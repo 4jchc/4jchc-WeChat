@@ -150,6 +150,21 @@ class WCContactsViewController: UITableViewController,NSFetchedResultsController
         return cell!
     }
 
+    //实现这个方法，cell往左滑就会有个delete
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            print("删除好友");
+            let friend: XMPPUserCoreDataStorageObject  = _resultsContrl.fetchedObjects![indexPath.row] as! XMPPUserCoreDataStorageObject;
+            
+            let freindJid: XMPPJID  = friend.jid;
+            
+            WCXMPPTool.sharedWCXMPPTool._roster.removeUser(freindJid)
+    }
+    }
+}
+
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -196,4 +211,4 @@ class WCContactsViewController: UITableViewController,NSFetchedResultsController
     }
     */
 
-}
+

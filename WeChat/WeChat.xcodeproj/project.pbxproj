@@ -170,6 +170,7 @@
 		967A80FC1C28481C00772D90 /* WCMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A80FB1C28481C00772D90 /* WCMeViewController.swift */; };
 		96B0884E1C290C6100F3B921 /* WCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884D1C290C6100F3B921 /* WCLog.swift */; };
 		96B088501C290DB500F3B921 /* WBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884F1C290DB500F3B921 /* WBLog.swift */; };
+		96FAAE491C2AF3B000C1AFCC /* WCAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FAAE481C2AF3B000C1AFCC /* WCAddContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -499,6 +500,7 @@
 		967A80FB1C28481C00772D90 /* WCMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCMeViewController.swift; sourceTree = "<group>"; };
 		96B0884D1C290C6100F3B921 /* WCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLog.swift; sourceTree = "<group>"; };
 		96B0884F1C290DB500F3B921 /* WBLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLog.swift; sourceTree = "<group>"; };
+		96FAAE481C2AF3B000C1AFCC /* WCAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCAddContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1414,6 +1416,7 @@
 			isa = PBXGroup;
 			children = (
 				967A80E21C27F79C00772D90 /* WCOtherLoginViewController.swift */,
+				96FAAE481C2AF3B000C1AFCC /* WCAddContactViewController.swift */,
 				960D8BA11C2920410099E13A /* WCLoginViewController.swift */,
 				960D8BB11C2956100099E13A /* WCRegisgerViewController.swift */,
 				960D8BA31C29206C0099E13A /* WCBaseLoginViewController.swift */,
@@ -1769,6 +1772,7 @@
 				967A806A1C27D45D00772D90 /* XMPPBandwidthMonitor.m in Sources */,
 				967A80CE1C27D45D00772D90 /* DDTTYLogger.m in Sources */,
 				967A807F1C27D45D00772D90 /* XMPPRoom.xcdatamodeld in Sources */,
+				96FAAE491C2AF3B000C1AFCC /* WCAddContactViewController.swift in Sources */,
 				967A80711C27D45D00772D90 /* XMPPRoster.xcdatamodel in Sources */,
 				967A80CA1C27D45D00772D90 /* DDAbstractDatabaseLogger.m in Sources */,
 				967A80961C27D45D00772D90 /* XMPPvCardTempEmail.m in Sources */,

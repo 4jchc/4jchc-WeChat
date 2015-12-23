@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+    let domain = "4jbook-pro.local"
 class WCUserInfo: NSObject {
     
     let UserKey = "user"
     let LoginStatusKey = "LoginStatus"
     let PwdKey = "pwd"
-    let domain = "4jbook-pro.local"
+
 
     //计算属性(提供getter/setter)
     var jid : String {
