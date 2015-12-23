@@ -19,6 +19,7 @@
 		9653795B1C2A9B3900DC3E3D /* WCProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */; };
 		9653795D1C2AA26C00DC3E3D /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */; };
 		9653795F1C2AA32000DC3E3D /* UIViewController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */; };
+		965379611C2AC5AF00DC3E3D /* WCEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */; };
 		967A7EDC1C27D40900772D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDB1C27D40900772D90 /* AppDelegate.swift */; };
 		967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDD1C27D40900772D90 /* ViewController.swift */; };
 		967A7EE11C27D40900772D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A7EDF1C27D40900772D90 /* Main.storyboard */; };
@@ -200,6 +201,7 @@
 		9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCProfileViewController.swift; sourceTree = "<group>"; };
 		9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController +Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIViewController +Extension.swift"; sourceTree = "<group>"; };
+		965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCEditProfileViewController.swift; sourceTree = "<group>"; };
 		967A7ED81C27D40900772D90 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967A7EDB1C27D40900772D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967A7EDD1C27D40900772D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1475,6 +1477,7 @@
 			children = (
 				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
 				9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */,
+				965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1660,6 +1663,7 @@
 				967A80731C27D45D00772D90 /* XMPPUserCoreDataStorageObject.m in Sources */,
 				967A80D31C27D45D00772D90 /* DDXMLDocument.m in Sources */,
 				967A80721C27D45D00772D90 /* XMPPRosterCoreDataStorage.m in Sources */,
+				965379611C2AC5AF00DC3E3D /* WCEditProfileViewController.swift in Sources */,
 				967A80871C27D45D00772D90 /* XMPPRoomMemoryStorage.m in Sources */,
 				967A807D1C27D45D00772D90 /* XMPPLastActivity.m in Sources */,
 				967A80D51C27D45D00772D90 /* DDXMLNode.m in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WCProfileViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class WCProfileViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,WCEditProfileViewControllerDelegate {
     
     //照片选择器懒加载
     lazy var imagePicker:UIImagePickerController? = {
@@ -141,10 +141,25 @@ class WCProfileViewController: UITableViewController,UIImagePickerControllerDele
   
             
         }else{//跳到下一个控制器
-            print("跳到下一个控制器");
+            print("跳到下一个控制器")
+            self.performSegueWithIdentifier("EditVCardSegue", sender:cell)
             
         }
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //获取编辑个人信息的控制destination
+        let destVc = segue.destinationViewController;
+        if destVc.isKindOfClass(WCEditProfileViewController.classForCoder()){
+            
+            let editVc:WCEditProfileViewController = destVc as! WCEditProfileViewController
+            editVc.cell = sender as! UITableViewCell
+            editVc.delegate = self;
+        }
+
+    }
+
+    
     
      func showAlert(
         presentController: UIViewController!,
@@ -198,9 +213,49 @@ class WCProfileViewController: UITableViewController,UIImagePickerControllerDele
         
         // 隐藏当前模态窗口
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        // 更新到服务器
+        self.editProfileViewControllerDidSave()
 
     }
 
+    //MARK: -  编辑个人信息的控制器代理
+    func editProfileViewControllerDidSave(){
+        // 保存
+        //获取当前的电子名片信息
+        let myvCard: XMPPvCardTemp = WCXMPPTool.sharedWCXMPPTool.vCard.myvCardTemp;
+        
+        // 图片
+        myvCard.photo = UIImagePNGRepresentation(self.haedView.image!);
+        
+        // 昵称
+        myvCard.nickname = self.nicknameLabel.text;
+        
+        // 公司
+        myvCard.orgName = self.orgnameLabel.text;
+        
+        // 部门
+        if (self.orgunitLabel.text?.isEmpty == false ) {
+            
+            myvCard.orgUnits = [self.orgunitLabel.text!]
+        }
+        
+        
+        // 职位
+        myvCard.title = self.titleLabel.text;
+        
+        
+        // 电话
+        myvCard.note =  self.phoneLabel.text;
+        
+        // 邮件
+        myvCard.mailer = self.emailLabel.text;
+        
+        
+        //更新 这个方法内部会实现数据上传到服务，无需程序自己操作
+        WCXMPPTool.sharedWCXMPPTool.vCard.updateMyvCardTemp(myvCard)
+        
+    }
     
     deinit{
         print("**\(super.classForCoder)--已销毁")

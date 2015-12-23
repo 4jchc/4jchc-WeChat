@@ -457,11 +457,64 @@
                         <outlet property="phoneLabel" destination="wHT-tB-DjM" id="nDk-ls-aN4"/>
                         <outlet property="titleLabel" destination="qbY-2w-GZi" id="sbK-dM-9ee"/>
                         <outlet property="weixinNumLabel" destination="N04-Uq-cUh" id="7FS-DV-Ptt"/>
+                        <segue destination="4jO-4J-JH5" kind="show" identifier="EditVCardSegue" id="X1d-Ef-wM6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bB-8J-DLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-826" y="823"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="ZKN-m6-zX0">
+            <objects>
+                <tableViewController id="4jO-4J-JH5" customClass="WCEditProfileViewController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wpH-pd-1Rd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="Pln-Lu-Iuo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="egM-o7-ulR">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="egM-o7-ulR" id="pxW-B6-F5z">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9a6-vB-nIO">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9a6-vB-nIO" secondAttribute="trailing" id="6oE-0j-FUd"/>
+                                                <constraint firstItem="9a6-vB-nIO" firstAttribute="top" secondItem="pxW-B6-F5z" secondAttribute="topMargin" id="7BW-Ti-jOo"/>
+                                                <constraint firstItem="9a6-vB-nIO" firstAttribute="leading" secondItem="pxW-B6-F5z" secondAttribute="leadingMargin" id="iXT-dU-7R6"/>
+                                                <constraint firstItem="9a6-vB-nIO" firstAttribute="bottom" secondItem="pxW-B6-F5z" secondAttribute="bottomMargin" id="lCf-Fd-VNb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="4jO-4J-JH5" id="mHI-5Y-6h5"/>
+                            <outlet property="delegate" destination="4jO-4J-JH5" id="ua9-XL-7zC"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="textField" destination="9a6-vB-nIO" id="KLx-2X-nvu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m4g-l8-lfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="816"/>
         </scene>
         <!--我-->
         <scene sceneID="zhe-d1-NlD">
