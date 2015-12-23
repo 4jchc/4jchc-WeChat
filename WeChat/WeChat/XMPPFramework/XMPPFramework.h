@@ -24,6 +24,10 @@
 
 #import "XMPP.h"
 
+// 花名册模块
+#import "XMPPRoster.h"
+#import "XMPPRosterCoreDataStorage.h"
+
 // 自动连接模块
 #import "XMPPReconnect.h"
 

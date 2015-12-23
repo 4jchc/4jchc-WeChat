@@ -55,7 +55,10 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     //头像模块
     var _avatar: XMPPvCardAvatarModule!
 
- 
+    //花名册数据存储
+    var rosterStorage:XMPPRosterCoreDataStorage!
+    //花名册模块
+    var _roster:XMPPRoster!
     
     ///定义闭包// XMPP请求结果的block
     typealias XMPPResultBlock = (type:XMPPResultType) -> Void
@@ -90,6 +93,11 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         _avatar = XMPPvCardAvatarModule.init(withvCardTempModule: vCard)
         _avatar.activate(_xmppStream)
         
+        // 添加花名册模块【获取好友列表】
+        rosterStorage = XMPPRosterCoreDataStorage()
+        _roster = XMPPRoster(rosterStorage: rosterStorage)
+        _roster.activate(_xmppStream)
+        
         // 设置代理
         _xmppStream!.addDelegate(self, delegateQueue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
         
@@ -98,7 +106,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     //MARK: - 释放xmppStream相关的资源
     ///释放xmppStream相关的资源
     func teardownXmpp(){
-        
+    
         // 移除代理
         _xmppStream!.removeDelegate(self)
         
@@ -106,6 +114,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         _reconnect!.deactivate()
         vCard.deactivate()
         _avatar!.deactivate()
+        _roster.deactivate()
         
         // 断开连接
         _xmppStream!.disconnect()
@@ -115,7 +124,10 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         vCard = nil
         vCardStorage = nil
         _avatar = nil
+        _roster = nil;
+        rosterStorage = nil;
         _xmppStream = nil
+        
         
     }
     

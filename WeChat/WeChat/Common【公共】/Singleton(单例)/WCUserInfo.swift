@@ -13,7 +13,17 @@ class WCUserInfo: NSObject {
     let UserKey = "user"
     let LoginStatusKey = "LoginStatus"
     let PwdKey = "pwd"
-    
+    let domain = "4jbook-pro.local"
+
+    //计算属性(提供getter/setter)
+    var jid : String {
+        get{
+            return "\(self.user)@\(domain)"
+            
+        }
+
+    }
+
     /// 单例，全局访问入口
     internal static let sharedWCUserInfo = WCUserInfo()
     //用户名

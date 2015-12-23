@@ -59,17 +59,17 @@
             </objects>
             <point key="canvasLocation" x="-1602" y="-1368"/>
         </scene>
-        <!--Root View Controller-->
+        <!--通讯录-->
         <scene sceneID="r4c-Qt-eaf">
             <objects>
-                <tableViewController id="JT5-uN-Trj" sceneMemberID="viewController">
+                <tableViewController id="JT5-uN-Trj" customClass="WCContactsViewController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hv0-eB-VYB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ty6-BR-NxH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" id="Ty6-BR-NxH">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ty6-BR-NxH" id="p3b-Tx-fN6">
@@ -85,7 +85,7 @@
                             <outlet property="delegate" destination="JT5-uN-Trj" id="HeL-8c-w3O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="l5L-zd-VZ0"/>
+                    <navigationItem key="navigationItem" title="通讯录" id="l5L-zd-VZ0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhd-wy-uWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

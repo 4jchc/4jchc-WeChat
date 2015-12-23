@@ -20,6 +20,7 @@
 		9653795D1C2AA26C00DC3E3D /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */; };
 		9653795F1C2AA32000DC3E3D /* UIViewController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */; };
 		965379611C2AC5AF00DC3E3D /* WCEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */; };
+		965379631C2ADE9E00DC3E3D /* WCContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379621C2ADE9E00DC3E3D /* WCContactsViewController.swift */; };
 		967A7EDC1C27D40900772D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDB1C27D40900772D90 /* AppDelegate.swift */; };
 		967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967A7EDD1C27D40900772D90 /* ViewController.swift */; };
 		967A7EE11C27D40900772D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967A7EDF1C27D40900772D90 /* Main.storyboard */; };
@@ -202,6 +203,7 @@
 		9653795C1C2AA26C00DC3E3D /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		9653795E1C2AA32000DC3E3D /* UIViewController +Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController +Extension.swift"; path = "../../../../../💗常用延伸代码/Extension/UIViewController +Extension.swift"; sourceTree = "<group>"; };
 		965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCEditProfileViewController.swift; sourceTree = "<group>"; };
+		965379621C2ADE9E00DC3E3D /* WCContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCContactsViewController.swift; sourceTree = "<group>"; };
 		967A7ED81C27D40900772D90 /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967A7EDB1C27D40900772D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967A7EDD1C27D40900772D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -729,14 +731,14 @@
 				967A7F411C27D45C00772D90 /* CoreDataStorage */,
 				967A7F451C27D45C00772D90 /* GoogleSharedStatus */,
 				967A7F481C27D45C00772D90 /* ProcessOne */,
-				967A7F4B1C27D45C00772D90 /* Reconnect */,
-				967A7F4E1C27D45C00772D90 /* Roster */,
+				967A7F4B1C27D45C00772D90 /* Reconnect【自动连接模块】 */,
+				967A7F4E1C27D45C00772D90 /* Roster【花名册模块好友列表】 */,
 				967A7F661C27D45C00772D90 /* SystemInputActivityMonitor */,
 				967A7F691C27D45C00772D90 /* XEP-0009 */,
 				967A7F701C27D45C00772D90 /* XEP-0012 */,
 				967A7F751C27D45C00772D90 /* XEP-0016 */,
 				967A7F781C27D45C00772D90 /* XEP-0045 */,
-				967A7F9C1C27D45C00772D90 /* XEP-0054 */,
+				967A7F9C1C27D45C00772D90 /* XEP-0054【电子名片模块】 */,
 				967A7FB81C27D45C00772D90 /* XEP-0059 */,
 				967A7FBD1C27D45C00772D90 /* XEP-0060 */,
 				967A7FC21C27D45C00772D90 /* XEP-0065 */,
@@ -802,16 +804,17 @@
 			path = ProcessOne;
 			sourceTree = "<group>";
 		};
-		967A7F4B1C27D45C00772D90 /* Reconnect */ = {
+		967A7F4B1C27D45C00772D90 /* Reconnect【自动连接模块】 */ = {
 			isa = PBXGroup;
 			children = (
 				967A7F4C1C27D45C00772D90 /* XMPPReconnect.h */,
 				967A7F4D1C27D45C00772D90 /* XMPPReconnect.m */,
 			);
+			name = "Reconnect【自动连接模块】";
 			path = Reconnect;
 			sourceTree = "<group>";
 		};
-		967A7F4E1C27D45C00772D90 /* Roster */ = {
+		967A7F4E1C27D45C00772D90 /* Roster【花名册模块好友列表】 */ = {
 			isa = PBXGroup;
 			children = (
 				967A7F4F1C27D45C00772D90 /* CoreDataStorage */,
@@ -822,6 +825,7 @@
 				967A7F641C27D45C00772D90 /* XMPPRosterPrivate.h */,
 				967A7F651C27D45C00772D90 /* XMPPUser.h */,
 			);
+			name = "Roster【花名册模块好友列表】";
 			path = Roster;
 			sourceTree = "<group>";
 		};
@@ -958,7 +962,7 @@
 			path = MemoryStorage;
 			sourceTree = "<group>";
 		};
-		967A7F9C1C27D45C00772D90 /* XEP-0054 */ = {
+		967A7F9C1C27D45C00772D90 /* XEP-0054【电子名片模块】 */ = {
 			isa = PBXGroup;
 			children = (
 				967A7F9D1C27D45C00772D90 /* CoreDataStorage */,
@@ -979,6 +983,7 @@
 				967A7FB61C27D45C00772D90 /* XMPPvCardTempTel.h */,
 				967A7FB71C27D45C00772D90 /* XMPPvCardTempTel.m */,
 			);
+			name = "XEP-0054【电子名片模块】";
 			path = "XEP-0054";
 			sourceTree = "<group>";
 		};
@@ -1476,6 +1481,7 @@
 			isa = PBXGroup;
 			children = (
 				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
+				965379621C2ADE9E00DC3E3D /* WCContactsViewController.swift */,
 				9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */,
 				965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */,
 			);
@@ -1655,6 +1661,7 @@
 				967A80AF1C27D45D00772D90 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				967A80AD1C27D45D00772D90 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				967A80901C27D45D00772D90 /* XMPPvCardCoreDataStorageObject.m in Sources */,
+				965379631C2ADE9E00DC3E3D /* WCContactsViewController.swift in Sources */,
 				967A80CF1C27D45D00772D90 /* ContextFilterLogFormatter.m in Sources */,
 				967A80911C27D45D00772D90 /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				967A809B1C27D45D00772D90 /* XMPPResultSet.m in Sources */,
