@@ -46,14 +46,15 @@ class WCRegisgerViewController: UIViewController {
         userInfo.registerPwd = self.pwdField.text;
         
         
-        // 2.调用AppDelegate的xmppUserRegister
-        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
-        app.registerOperation = true
-        
+//        // 2.调用AppDelegate的xmppUserRegister
+//        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
+//        app.registerOperation = true
+        WCXMPPTool.sharedWCXMPPTool.registerOperation = true
         // 提示
         MBProgressHUD.showMessage("正在注册中....." ,toView:self.view)
         weak var weakSelf = self
-        app.xmppUserRegister({ (type) -> Void in
+        
+        WCXMPPTool.sharedWCXMPPTool.xmppUserRegister({ (type) -> Void in
             
             weakSelf?.handleResultType(type)
             

@@ -11,10 +11,10 @@ import UIKit
 class WCMeViewController: UITableViewController {
 
     @IBAction func logoutBtnClick(sender: AnyObject) {
-        //直接调用 appdelegate的注销方法
-        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
-        app.xmppUserlogout()
-        
+//        //直接调用 appdelegate的注销方法
+//        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
+//        app.xmppUserlogout()
+        WCXMPPTool.sharedWCXMPPTool.xmppUserlogout()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

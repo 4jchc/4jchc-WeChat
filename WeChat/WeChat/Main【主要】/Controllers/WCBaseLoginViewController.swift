@@ -21,10 +21,9 @@ class WCBaseLoginViewController: UIViewController {
         
         MBProgressHUD.showMessage("正在登录中...", toView: self.view)
         
-        let app: AppDelegate  = UIApplication.sharedApplication().delegate as! AppDelegate
         weak var weakSelf = self
-        app.registerOperation = false
-        app.xmppUserLogin({ (type) -> Void in
+        WCXMPPTool.sharedWCXMPPTool.registerOperation = false
+        WCXMPPTool.sharedWCXMPPTool.xmppUserLogin({ (type) -> Void in
             
             weakSelf?.handleResultType(type)
             
