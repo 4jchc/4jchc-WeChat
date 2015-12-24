@@ -321,10 +321,92 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 - (void)clearTelecomsAddresses { }
 
 
-- (NSArray *)emailAddresses { return nil; }
+//**********************添加emali解析***************************************
+
+//- (NSArray *)emailAddresses { return nil; }
+- (NSArray *)emailAddresses {
+    
+    /**<NICKNAME>niuniumama</NICKNAME>
+     <EMAIL>
+     <HOME />
+     <INTERNET />
+     <PREF />
+     <USERID>niuniu@itcast.cn</USERID>
+     </EMAIL>     */
+    //1.获取EMAIL标签
+    NSXMLElement *emailE =  [self elementForName:@"EMAIL"];
+    
+    // 2.通过EMAIL标签找到USERID
+    NSXMLElement  *userIDE = [emailE elementForName:@"USERID"];
+    
+    NSString *email = [userIDE stringValue];
+    if (email.length > 0) {
+        return @[email];
+    }
+    
+    return nil;
+    
+}
+
+
+
+
+//**********************添加emali解析***************************************
+
+
+//- (void)setEmailAddresses:(NSArray *)emails { }
+- (void)setEmailAddresses:(NSArray *)emails {
+    
+    if (emails.count == 0) {
+        return;
+    }
+    /*
+     <EMAIL>
+     <HOME />
+     <INTERNET />
+     <PREF />
+     <USERID>niuniu@itcast.cn</USERID>
+     </EMAIL>
+     */
+    
+    // 1.获取EMAIL标签
+    NSXMLElement *emailE =  [self elementForName:@"EMAIL"];
+    
+    // 2.移除USERID的标签
+    [emailE removeElementForName:@"USERID"];
+    
+    
+    // 3.创建新USERID的标签
+    
+    //只取第一个邮件保存
+    NSString *emailStr = emails[0];
+    NSXMLElement  *userIDE = [NSXMLElement elementWithName:@"USERID" stringValue:emailStr];
+    
+    // 4.添加到EMail标签
+    [emailE addChild:userIDE];
+    
+    
+}
+
+//**********************添加emali解析***************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)addEmailAddress:(XMPPvCardTempEmail *)email { }
 - (void)removeEmailAddress:(XMPPvCardTempEmail *)email { }
-- (void)setEmailAddresses:(NSArray *)emails { }
+
+
+
 - (void)clearEmailAddresses { }
 
 
