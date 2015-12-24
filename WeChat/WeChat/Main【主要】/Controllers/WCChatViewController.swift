@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate {
+class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate {
     
     var friendJid:XMPPJID!
     var _resultsContr: NSFetchedResultsController!
@@ -65,7 +65,6 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
             //横屏{{0, 0}, {352, 1024}}
             //MARK: -  如果是ios7以下的，当屏幕是横屏，键盘的高底是size.with
             if (UIDevice.currentDevice().systemVersion as NSString).doubleValue < 8.0 && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
-                
                 self.inputViewConstraint.constant = rect.size.width
                 
             }
@@ -74,8 +73,11 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 self.view.layoutIfNeeded()
             }
         }else{
+            // 隐藏键盘的进修 距离底部的约束永远为0
             self.inputViewConstraint.constant = 0
         }
+        //表格滚动到底部
+        self.scrollToTableBottom()
     }
     
     
@@ -86,6 +88,8 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         // 创建输入框View
         self.view.addSubview(InputView)
         
+        // 设置TextView代理
+        InputView.textView.delegate = self;
         // 自动布局
         
         // 水平方向的约束
@@ -118,32 +122,32 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         // 上下文
         let context:NSManagedObjectContext = WCXMPPTool.sharedWCXMPPTool._msgStorage.mainThreadManagedObjectContext as NSManagedObjectContext
-      
+        
         // 请求对象
         let request:NSFetchRequest = NSFetchRequest(entityName: "XMPPMessageArchiving_Message_CoreDataObject")
-
+        
         // 过滤、排序
         // 1.当前登录用户的JID的消息
         // 2.好友的Jid的消息
         let pre:NSPredicate = NSPredicate(format:"streamBareJidStr = %@ AND bareJidStr = %@",WCUserInfo.sharedWCUserInfo.jid ,self.friendJid.bare())
-    
+        
         NSLog("%@",pre);
         request.predicate = pre;
         
         // 时间升序
         let timeSort:NSSortDescriptor = NSSortDescriptor.init(key: "timestamp", ascending: true)
-       
+        
         request.sortDescriptors = [timeSort];
         
         // 查询
         _resultsContr = NSFetchedResultsController.init(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
- 
+        
         try! _resultsContr.performFetch()
-
+        
         // 代理
         _resultsContr.delegate = self;
-
+        
     }
     
     //MARK: -  表格的数据源
@@ -162,7 +166,17 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         // 获取聊天消息对象
         let msg: XMPPMessageArchiving_Message_CoreDataObject = _resultsContr.fetchedObjects![indexPath.row] as! XMPPMessageArchiving_Message_CoreDataObject;
         //显示消息
-        cell!.textLabel!.text = msg.body
+        //显示消息
+        if msg.outgoing.boolValue == true{//自己发
+            
+            cell!.textLabel!.text = "Me: \(msg.body)"
+            cell?.textLabel?.textColor = UIColor.randomColor
+        }else{
+            cell!.textLabel!.text = "Other: \(msg.body)"
+            cell?.textLabel?.textColor = UIColor.randomColor
+        }
+        
+       // cell!.textLabel!.text = msg.body
         return cell!
     }
     
@@ -173,7 +187,60 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         // 刷新数据
         self.tableView.reloadData()
+        self.scrollToTableBottom()
     }
+    
+    //MARK: - TextView的代理
+    
+    func textViewDidChange(textView: UITextView) {
+        
+        let text:NSString = textView.text
+ 
+        // 换行就等于点击了的send
+        if text.rangeOfString("\n").length != 0{
+            
+            NSLog("发送数据 %@",text)
+   
+            self.sendMsgWithText(text)
+            //清空数据
+            textView.text = nil;
+        }else{
+            NSLog("%@",textView.text);
+            
+        }
+    }
+
+    
+    
+    //MARK: - 发送聊天消息
+    func sendMsgWithText(text:NSString ){
+        
+        let msg:XMPPMessage = XMPPMessage(type: "chat" ,to:self.friendJid)
+
+        // 设置内容
+        msg.addBody(text as String)
+     
+        NSLog("%@",msg);
+        
+        WCXMPPTool.sharedWCXMPPTool._xmppStream?.sendElement(msg)
+    }
+    
+    //MARK: - 滚动到底部
+    func scrollToTableBottom(){
+        
+        let lastRow:Int = _resultsContr.fetchedObjects!.count - 1;
+        let lastPath:NSIndexPath = NSIndexPath(forRow: lastRow, inSection: 0)
+        
+        self.tableView.scrollToRowAtIndexPath(lastPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
