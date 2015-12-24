@@ -757,7 +757,7 @@
 				967A7FD51C27D45C00772D90 /* XEP-0100 */,
 				967A7FD81C27D45D00772D90 /* XEP-0106 */,
 				967A7FDB1C27D45D00772D90 /* XEP-0115 */,
-				967A7FE61C27D45D00772D90 /* XEP-0136 */,
+				967A7FE61C27D45D00772D90 /* XEP-0136【聊天消息模块】 */,
 				967A7FF21C27D45D00772D90 /* XEP-0153 */,
 				967A7FF51C27D45D00772D90 /* XEP-0172 */,
 				967A7FFA1C27D45D00772D90 /* XEP-0184 */,
@@ -1124,13 +1124,14 @@
 			path = CoreDataStorage;
 			sourceTree = "<group>";
 		};
-		967A7FE61C27D45D00772D90 /* XEP-0136 */ = {
+		967A7FE61C27D45D00772D90 /* XEP-0136【聊天消息模块】 */ = {
 			isa = PBXGroup;
 			children = (
 				967A7FE71C27D45D00772D90 /* CoreDataStorage */,
 				967A7FF01C27D45D00772D90 /* XMPPMessageArchiving.h */,
 				967A7FF11C27D45D00772D90 /* XMPPMessageArchiving.m */,
 			);
+			name = "XEP-0136【聊天消息模块】";
 			path = "XEP-0136";
 			sourceTree = "<group>";
 		};

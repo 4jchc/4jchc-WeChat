@@ -8,7 +8,10 @@
 
 import UIKit
 
-class WCChatViewController: UIViewController {
+class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate {
+    
+    var friendJid:XMPPJID!
+    var _resultsContr: NSFetchedResultsController!
     
     
     //inputView底部约束
@@ -17,7 +20,9 @@ class WCChatViewController: UIViewController {
     lazy var tableView:UITableView = {
         
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor.greenColor()
+        //tableView.backgroundColor = UIColor.greenColor()
+        tableView.dataSource = self;
+        tableView.delegate = self
         //MARK: -  代码实现自动布局，要设置下面的属性为NO
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -40,6 +45,8 @@ class WCChatViewController: UIViewController {
         
         //键盘隐藏
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillHideNotification, object: nil)
+        // 加载数据
+        self.loadMsgs()
     }
     
     
@@ -71,14 +78,14 @@ class WCChatViewController: UIViewController {
         }
     }
     
-
+    
     func setupView(){
         // 代码方式实现自动布局 VFL
         // 创建一个Tableview
         self.view.addSubview(tableView)
         // 创建输入框View
         self.view.addSubview(InputView)
-
+        
         // 自动布局
         
         // 水平方向的约束
@@ -86,7 +93,7 @@ class WCChatViewController: UIViewController {
         // 1.tabview水平方向的约束
         let tabviewHConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tableview]-0-|",options: [],metrics: nil,
             views: views as! [String : AnyObject]
-            )
+        )
         self.view.addConstraints(tabviewHConstraints as! [NSLayoutConstraint])
         
         // 2.inputView水平方向的约束
@@ -106,7 +113,69 @@ class WCChatViewController: UIViewController {
         NSLog("%@",vContraints);
     }
     
+    //MARK: -  加载XMPPMessageArchiving数据库的数据显示在表格
+    func loadMsgs(){
+        
+        // 上下文
+        let context:NSManagedObjectContext = WCXMPPTool.sharedWCXMPPTool._msgStorage.mainThreadManagedObjectContext as NSManagedObjectContext
+      
+        // 请求对象
+        let request:NSFetchRequest = NSFetchRequest(entityName: "XMPPMessageArchiving_Message_CoreDataObject")
 
+        // 过滤、排序
+        // 1.当前登录用户的JID的消息
+        // 2.好友的Jid的消息
+        let pre:NSPredicate = NSPredicate(format:"streamBareJidStr = %@ AND bareJidStr = %@",WCUserInfo.sharedWCUserInfo.jid ,self.friendJid.bare())
+    
+        NSLog("%@",pre);
+        request.predicate = pre;
+        
+        // 时间升序
+        let timeSort:NSSortDescriptor = NSSortDescriptor.init(key: "timestamp", ascending: true)
+       
+        request.sortDescriptors = [timeSort];
+        
+        // 查询
+        _resultsContr = NSFetchedResultsController.init(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+ 
+        try! _resultsContr.performFetch()
 
+        // 代理
+        _resultsContr.delegate = self;
+
+    }
+    
+    //MARK: -  表格的数据源
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return _resultsContr.fetchedObjects?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let ID:String = "ChatCell"
+        var cell = tableView.dequeueReusableCellWithIdentifier(ID  as String)
+        
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: ID as String)
+        }
+        // 获取聊天消息对象
+        let msg: XMPPMessageArchiving_Message_CoreDataObject = _resultsContr.fetchedObjects![indexPath.row] as! XMPPMessageArchiving_Message_CoreDataObject;
+        //显示消息
+        cell!.textLabel!.text = msg.body
+        return cell!
+    }
+    
+    
+    
+    
+    //MARK: -  ResultController的代理
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        // 刷新数据
+        self.tableView.reloadData()
+    }
+    
+    
+    
     
 }

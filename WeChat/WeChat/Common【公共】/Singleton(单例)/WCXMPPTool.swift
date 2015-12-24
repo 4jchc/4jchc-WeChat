@@ -74,6 +74,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
     //聊天的数据存储
     var _msgStorage:XMPPMessageArchivingCoreDataStorage!
     
+    
     var _xmppStream: XMPPStream?
     
     //注册操作YES 注册 / NO 登录
