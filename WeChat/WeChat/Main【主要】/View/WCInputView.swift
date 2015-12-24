@@ -9,6 +9,7 @@
 import UIKit
 
 class WCInputView: UIView {
+    @IBOutlet weak var addBtn: UIButton!
     
     @IBOutlet weak var textView: UITextView!
 

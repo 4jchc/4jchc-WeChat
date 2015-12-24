@@ -16,12 +16,8 @@
 //#import "NSXMLElement+XMPP.h"
 //
 //#import <SystemConfiguration/SystemConfiguration.h>
-// 自定义Log
-#ifdef DEBUG
 
-#define WCLog(...) NSLog(@"%s %d \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#import "UIImageView+WebCache.h"
 
-#else
-#define WCLog(...)
 
-#endif
+#import "HttpTool.h"

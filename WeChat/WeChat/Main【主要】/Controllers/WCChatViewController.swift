@@ -8,14 +8,18 @@
 
 import UIKit
 
-class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate {
+class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var friendJid:XMPPJID!
     var _resultsContr: NSFetchedResultsController!
     
     
     //inputView底部约束
-    var inputViewConstraint: NSLayoutConstraint!
+    var inputViewBottomConstraint: NSLayoutConstraint!
+ 
+    //inputView高度约束
+    var inputViewHeightConstraint: NSLayoutConstraint!
+    
     //MARK: -  懒加载
     lazy var tableView:UITableView = {
         
@@ -33,7 +37,13 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         inputView.translatesAutoresizingMaskIntoConstraints = false
         return inputView
     }()
-    
+    //调用OC的方法懒加载
+    lazy var httpTool:HttpTool = {
+        
+        let ani = HttpTool()
+        
+        return ani
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,16 +75,16 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
             //横屏{{0, 0}, {352, 1024}}
             //MARK: -  如果是ios7以下的，当屏幕是横屏，键盘的高底是size.with
             if (UIDevice.currentDevice().systemVersion as NSString).doubleValue < 8.0 && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
-                self.inputViewConstraint.constant = rect.size.width
+                self.inputViewBottomConstraint.constant = rect.size.width
                 
             }
-            self.inputViewConstraint.constant = height
+            self.inputViewBottomConstraint.constant = height
             UIView.animateWithDuration(duration) {
                 self.view.layoutIfNeeded()
             }
         }else{
             // 隐藏键盘的进修 距离底部的约束永远为0
-            self.inputViewConstraint.constant = 0
+            self.inputViewBottomConstraint.constant = 0
         }
         //表格滚动到底部
         self.scrollToTableBottom()
@@ -90,6 +100,8 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         // 设置TextView代理
         InputView.textView.delegate = self;
+        // 添加按钮事件
+        InputView.addBtn.addTarget(self, action: "addBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         // 自动布局
         
         // 水平方向的约束
@@ -112,8 +124,12 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
             views: views as! [String : AnyObject]
         )
         self.view.addConstraints(vContraints as! [NSLayoutConstraint])
+        
         //MARK: - 代码创建的底部约束:
-        self.inputViewConstraint = vContraints.lastObject as! NSLayoutConstraint
+        // 添加inputView的高度约束
+        self.inputViewBottomConstraint = vContraints.lastObject as! NSLayoutConstraint
+        self.inputViewHeightConstraint = vContraints[2] as! NSLayoutConstraint;
+ 
         NSLog("%@",vContraints);
     }
     
@@ -165,24 +181,55 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
         // 获取聊天消息对象
         let msg: XMPPMessageArchiving_Message_CoreDataObject = _resultsContr.fetchedObjects![indexPath.row] as! XMPPMessageArchiving_Message_CoreDataObject;
-        //显示消息
-        //显示消息
-        if msg.outgoing.boolValue == true{//自己发
-            
-            cell!.textLabel!.text = "Me: \(msg.body)"
-            cell?.textLabel?.textColor = UIColor.randomColor
-        }else{
-            cell!.textLabel!.text = "Other: \(msg.body)"
-            cell?.textLabel?.textColor = UIColor.randomColor
-        }
         
-       // cell!.textLabel!.text = msg.body
+        
+        // 判断是图片还是纯文本
+        let chatType:NSString? = msg.message.attributeStringValueForName("bodyType")
+        print("chatType****\(chatType)")
+        if chatType == nil{
+            //MARK: - 类型为空的时候也要判断是谁发的.b不然对方的信息不显示
+            //显示消息
+            if msg.outgoing.boolValue == true{//自己发
+                
+                cell!.textLabel!.text = "Me: \(msg.body)"
+                cell?.textLabel?.textColor = UIColor.randomColor
+            }else{
+                cell!.textLabel!.text = "Other: \(msg.body)"
+                cell?.textLabel?.textColor = UIColor.randomColor
+            }
+            return cell!
+        }else{
+        if  chatType!.isEqualToString("image"){
+            
+            //下图片显示
+            cell?.imageView?.sd_setImageWithURL(NSURL(string: msg.body), placeholderImage: UIImage(named: "DefaultProfileHead_qq"))
+            
+            cell!.textLabel!.text = nil;
+            
+        }else if chatType!.isEqualToString("text") {
+            
+            print("msg.outgoing.boolValue:\(msg.outgoing.boolValue)")
+            //显示消息
+            if msg.outgoing.boolValue == true{//自己发
+                
+                cell!.textLabel!.text = "Me: \(msg.body)"
+                cell?.textLabel?.textColor = UIColor.randomColor
+            }else{
+                cell!.textLabel!.text = "Other: \(msg.body)"
+                cell?.textLabel?.textColor = UIColor.randomColor
+            }
+            cell!.imageView!.image = nil;
+        }
+        }
+
         return cell!
+        
+        
+        
     }
     
     
-    
-    
+
     //MARK: -  ResultController的代理
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         // 刷新数据
@@ -194,16 +241,36 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     func textViewDidChange(textView: UITextView) {
         
-        let text:NSString = textView.text
+        
  
+        //获取ContentSize
+        let contentH: CGFloat = textView.contentSize.height;
+        NSLog("textView的content的高度 %f",contentH);
+        
+        // 大于33，超过一行的高度/ 小于68 高度是在三行内
+        if (contentH > 33 && contentH < 68 ) {
+            
+            self.inputViewHeightConstraint.constant = contentH + 18;
+        }
+        
+ 
+        
+        
+        var text:NSString = textView.text
+        
+        
         // 换行就等于点击了的send
         if text.rangeOfString("\n").length != 0{
             
             NSLog("发送数据 %@",text)
-   
-            self.sendMsgWithText(text)
+            
+            // 去除换行字符
+            text = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            self.sendMsgWithText(text,bodyType: "text")
             //清空数据
             textView.text = nil;
+            // 发送完消息 把inputView的高度改回来
+            self.inputViewHeightConstraint.constant = 50;
         }else{
             NSLog("%@",textView.text);
             
@@ -213,10 +280,15 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     
     //MARK: - 发送聊天消息
-    func sendMsgWithText(text:NSString ){
-        
-        let msg:XMPPMessage = XMPPMessage(type: "chat" ,to:self.friendJid)
+    func sendMsgWithText(text:NSString,bodyType:String){
 
+
+        let msg:XMPPMessage = XMPPMessage(type: "chat" ,to:self.friendJid)
+        
+        //text 纯文本
+        //image 图片
+        msg.addAttributeWithName("bodyType", stringValue: bodyType)
+  
         // 设置内容
         msg.addBody(text as String)
      
@@ -229,17 +301,80 @@ class WCChatViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func scrollToTableBottom(){
         
         let lastRow:Int = _resultsContr.fetchedObjects!.count - 1;
+        if (lastRow < 0) {
+            //行数如果小于0，不能滚动
+            return
+        }
         let lastPath:NSIndexPath = NSIndexPath(forRow: lastRow, inSection: 0)
         
         self.tableView.scrollToRowAtIndexPath(lastPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     
+    //MARK: - 选择图片
+    
+    func addBtnClick(){
+        
+        let imagePicker: UIImagePickerController = UIImagePickerController()
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+        imagePicker.delegate = self;
+        self.presentViewController(imagePicker ,animated:true, completion:nil)
+    
+    }
     
     
+    //MARK: -  选取后图片的回调
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+         NSLog("%@",info)
+        // 隐藏图片选择器的窗口
+        
+        self.dismissViewControllerAnimated(true, completion:nil)
+        
+        // 获取图片
+        let image:UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // 把图片发送到文件服务器
+        //http post put
+        /**
+        * put实现文件上传没post那烦锁，而且比POST快
+        * put的文件上传路径就是下载路径
+        
+        *文件上传路径 http://localhost:8080/imfileserver/Upload/Image/ + "图片名【程序员自已定义】"
+        */
+        
+        // 1.取文件名 用户名 + 时间(201412111537)年月日时分秒
+        let user:String = WCUserInfo.sharedWCUserInfo.user
+     
+        let dataFormatter:NSDateFormatter = NSDateFormatter()
+        dataFormatter.dateFormat = "yyyyMMddHHmmss";
+        let timeStr:NSString = dataFormatter.stringFromDate(NSDate())
     
-    
-    
+        
+        // 针对我的服务，文件名不用加后缀
+        let fileName:String = user.stringByAppendingString(timeStr as String)
+        
+        // 2.拼接上传路径
+        let str = "http://localhost:8080/imfileserver/Upload/Image/"
+        let uploadUrl:NSString = str.stringByAppendingString(fileName)
+
+        
+        // 3.使用HTTP put 上传
+        // 图片上传请使用jpg格式 因为我写的服务器只接接收jpg
+        self.httpTool.uploadData(UIImageJPEGRepresentation(image, 0.75), url: NSURL(string: uploadUrl as String), progressBlock: nil) { (error) -> Void in
+            
+            if error == nil{
+                
+                NSLog("上传成功");
+                self.sendMsgWithText(uploadUrl, bodyType: "image")
+            }
+        }
+
+        
+        
+        // 图片发送成功，把图片的URL传Openfire的服务
+    }
+
     
     
     

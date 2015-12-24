@@ -18,21 +18,36 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpa-Xu-o9f">
+                    <rect key="frame" x="537" y="5" width="50" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="DxD-PT-1jh"/>
+                        <constraint firstAttribute="height" constant="40" id="pWj-eE-eGB"/>
+                    </constraints>
+                    <state key="normal" image="TypeSelectorBtn_Black"/>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="9lA-iQ-pCa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" identifier="123" id="AJ8-Mz-Aw5"/>
                 <constraint firstAttribute="trailing" secondItem="9lA-iQ-pCa" secondAttribute="trailing" constant="100" identifier="124" id="XKx-ve-rhl"/>
+                <constraint firstAttribute="trailing" secondItem="Hpa-Xu-o9f" secondAttribute="trailing" constant="13" id="XwN-De-aSf"/>
                 <constraint firstItem="9lA-iQ-pCa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" identifier="125" id="dFJ-2e-RDz"/>
                 <constraint firstAttribute="bottom" secondItem="9lA-iQ-pCa" secondAttribute="bottom" constant="5" identifier="126" id="uYz-Z6-Tle"/>
+                <constraint firstItem="Hpa-Xu-o9f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="xC1-vx-n0J"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addBtn" destination="Hpa-Xu-o9f" id="5Z3-w4-ymH"/>
                 <outlet property="textView" destination="9lA-iQ-pCa" id="rr0-Ee-Fnf"/>
             </connections>
-            <point key="canvasLocation" x="391" y="282"/>
+            <point key="canvasLocation" x="140" y="277"/>
         </view>
     </objects>
+    <resources>
+        <image name="TypeSelectorBtn_Black" width="35" height="35"/>
+    </resources>
 </document>
