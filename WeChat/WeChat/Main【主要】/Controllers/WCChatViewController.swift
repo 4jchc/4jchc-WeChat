@@ -36,21 +36,32 @@ class WCChatViewController: UIViewController {
         self.setupView()
         
         // 添加观察者，监听键盘框架的变化
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillShowNotification, object: nil)
+        
         //键盘隐藏
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardFrameChanged:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-
+    
     /// 键盘变化监听方法
     func keyboardFrameChanged(notification: NSNotification) {
-        if notification.name == UIKeyboardWillChangeFrameNotification {
+        
+        if notification.name == UIKeyboardWillShowNotification {
             
             // 键盘结束的Frme
             let rect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
             let height = rect.size.height
             
             let  duration = (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+            
+            //竖屏{{0, 0}, {768, 264}
+            //横屏{{0, 0}, {352, 1024}}
+            //MARK: -  如果是ios7以下的，当屏幕是横屏，键盘的高底是size.with
+            if (UIDevice.currentDevice().systemVersion as NSString).doubleValue < 8.0 && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
+                
+                self.inputViewConstraint.constant = rect.size.width
+                
+            }
             self.inputViewConstraint.constant = height
             UIView.animateWithDuration(duration) {
                 self.view.layoutIfNeeded()
@@ -60,22 +71,7 @@ class WCChatViewController: UIViewController {
         }
     }
     
-    
 
-//    func kbFrmWillChange(notification :NSNotification){
-//        NSLog("%@",notification.userInfo!);
-//        
-//        // 获取窗口的高度
-//        let windowH: CGFloat  = UIScreen.mainScreen().bounds.size.height
-//
-//        let kbEndFrm: CGRect  = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue();
-//        // 获取键盘结束的y值
-//        let kbEndY: CGFloat  = kbEndFrm.origin.y;
-//        
-//        self.inputViewConstraint.constant = windowH - kbEndY;
-//    }
-    
-    
     func setupView(){
         // 代码方式实现自动布局 VFL
         // 创建一个Tableview

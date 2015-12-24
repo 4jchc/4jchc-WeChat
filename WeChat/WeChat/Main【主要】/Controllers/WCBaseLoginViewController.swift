@@ -62,9 +62,20 @@ class WCBaseLoginViewController: UIViewController {
         
         //MARK: modal出来的模态窗口一定要隐藏不然会强引用
         self.dismissViewControllerAnimated(false, completion: nil)
-        // 登录成功来到主界面
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        self.view.window!.rootViewController = storyboard.instantiateInitialViewController();
+
+        if (UIDevice.currentDevice().systemVersion as NSString).doubleValue >= 8.0{
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            self.view.window!.rootViewController = storyboard.instantiateInitialViewController();
+            
+        }else{
+            UIStoryboard.showInitialVCWithName("Main")
+        }
+        
+
+
+
+
         
     }
     
