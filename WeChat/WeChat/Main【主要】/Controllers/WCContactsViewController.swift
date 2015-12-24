@@ -162,6 +162,11 @@ class WCContactsViewController: UITableViewController,NSFetchedResultsController
             WCXMPPTool.sharedWCXMPPTool._roster.removeUser(freindJid)
     }
     }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //选中表格进行聊天界面
+        self.performSegueWithIdentifier("ChatSegue" ,sender:nil)
+    }
+
 }
 
 

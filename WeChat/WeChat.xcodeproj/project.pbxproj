@@ -171,6 +171,9 @@
 		96B0884E1C290C6100F3B921 /* WCLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884D1C290C6100F3B921 /* WCLog.swift */; };
 		96B088501C290DB500F3B921 /* WBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B0884F1C290DB500F3B921 /* WBLog.swift */; };
 		96FAAE491C2AF3B000C1AFCC /* WCAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FAAE481C2AF3B000C1AFCC /* WCAddContactViewController.swift */; };
+		96FC8E3C1C2BA30D007B95F5 /* WCChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FC8E3B1C2BA30D007B95F5 /* WCChatViewController.swift */; };
+		96FC8E401C2BA3C7007B95F5 /* WCInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FC8E3F1C2BA3C7007B95F5 /* WCInputView.swift */; };
+		96FC8E421C2BA3D4007B95F5 /* WCInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96FC8E411C2BA3D4007B95F5 /* WCInputView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -501,6 +504,9 @@
 		96B0884D1C290C6100F3B921 /* WCLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCLog.swift; sourceTree = "<group>"; };
 		96B0884F1C290DB500F3B921 /* WBLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBLog.swift; sourceTree = "<group>"; };
 		96FAAE481C2AF3B000C1AFCC /* WCAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCAddContactViewController.swift; sourceTree = "<group>"; };
+		96FC8E3B1C2BA30D007B95F5 /* WCChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCChatViewController.swift; sourceTree = "<group>"; };
+		96FC8E3F1C2BA3C7007B95F5 /* WCInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCInputView.swift; sourceTree = "<group>"; };
+		96FC8E411C2BA3D4007B95F5 /* WCInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCInputView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1385,6 +1391,7 @@
 		967A80DC1C27E76300772D90 /* Main【主要】 */ = {
 			isa = PBXGroup;
 			children = (
+				96FC8E3E1C2BA391007B95F5 /* View */,
 				967A80FA1C2847FB00772D90 /* Controllers */,
 				967A7EDF1C27D40900772D90 /* Main.storyboard */,
 			);
@@ -1485,10 +1492,20 @@
 			children = (
 				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
 				965379621C2ADE9E00DC3E3D /* WCContactsViewController.swift */,
+				96FC8E3B1C2BA30D007B95F5 /* WCChatViewController.swift */,
 				9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */,
 				965379601C2AC5AF00DC3E3D /* WCEditProfileViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		96FC8E3E1C2BA391007B95F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96FC8E3F1C2BA3C7007B95F5 /* WCInputView.swift */,
+				96FC8E411C2BA3D4007B95F5 /* WCInputView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1600,6 +1617,7 @@
 				967A80DF1C27E7C900772D90 /* Login.storyboard in Resources */,
 				967A7EE31C27D40900772D90 /* Assets.xcassets in Resources */,
 				967A80D11C27D45D00772D90 /* README.txt in Resources */,
+				96FC8E421C2BA3D4007B95F5 /* WCInputView.xib in Resources */,
 				967A7EE11C27D40900772D90 /* Main.storyboard in Resources */,
 				967A80F31C283C7700772D90 /* MBProgressHUD.bundle in Resources */,
 			);
@@ -1657,6 +1675,7 @@
 				967A80C41C27D45D00772D90 /* GCDMulticastDelegate.m in Sources */,
 				967A80691C27D45D00772D90 /* XMPPStream.m in Sources */,
 				967A80AA1C27D45D00772D90 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				96FC8E3C1C2BA30D007B95F5 /* WCChatViewController.swift in Sources */,
 				967A808F1C27D45D00772D90 /* XMPPvCardCoreDataStorage.m in Sources */,
 				967A80E31C27F79C00772D90 /* WCOtherLoginViewController.swift in Sources */,
 				967A80751C27D45D00772D90 /* XMPPRosterMemoryStorage.m in Sources */,
@@ -1742,6 +1761,7 @@
 				967A80A61C27D45D00772D90 /* NSString+XEP_0106.m in Sources */,
 				960D8BA41C29206C0099E13A /* WCBaseLoginViewController.swift in Sources */,
 				967A80771C27D45D00772D90 /* XMPPRoster.m in Sources */,
+				96FC8E401C2BA3C7007B95F5 /* WCInputView.swift in Sources */,
 				967A80891C27D45D00772D90 /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
 				967A80B11C27D45D00772D90 /* XMPPvCardAvatarModule.m in Sources */,
 				967A80591C27D45D00772D90 /* XMPPDeprecatedDigestAuthentication.m in Sources */,

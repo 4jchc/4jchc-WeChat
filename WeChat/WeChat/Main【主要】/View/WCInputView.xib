@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WCInputView" customModule="WeChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9lA-iQ-pCa">
+                    <rect key="frame" x="50" y="5" width="450" height="40"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9lA-iQ-pCa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" identifier="123" id="AJ8-Mz-Aw5"/>
+                <constraint firstAttribute="trailing" secondItem="9lA-iQ-pCa" secondAttribute="trailing" constant="100" identifier="124" id="XKx-ve-rhl"/>
+                <constraint firstItem="9lA-iQ-pCa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" identifier="125" id="dFJ-2e-RDz"/>
+                <constraint firstAttribute="bottom" secondItem="9lA-iQ-pCa" secondAttribute="bottom" constant="5" identifier="126" id="uYz-Z6-Tle"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textView" destination="9lA-iQ-pCa" id="rr0-Ee-Fnf"/>
+            </connections>
+            <point key="canvasLocation" x="391" y="282"/>
+        </view>
+    </objects>
+</document>

@@ -37,6 +37,12 @@ enum XMPPResultType {
 //MARK: - 枚举
 class WCXMPPTool: NSObject,XMPPStreamDelegate {
     
+    ///定义闭包// XMPP请求结果的block
+    typealias XMPPResultBlock = (type:XMPPResultType) -> Void
+    ///初始化闭包
+    var _resultBlock:XMPPResultBlock!
+    
+    
     //单例
     static let sharedWCXMPPTool = WCXMPPTool()
     // 自动连接模块
@@ -47,25 +53,28 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         return ani
     }()
     
+    
     //电子名片
     var vCard: XMPPvCardTempModule!
-    
     //电子名片的数据存储
     var vCardStorage: XMPPvCardCoreDataStorage!
+    
     //头像模块
     var _avatar: XMPPvCardAvatarModule!
 
+    
     //花名册数据存储
     var rosterStorage:XMPPRosterCoreDataStorage!
     //花名册模块
     var _roster:XMPPRoster!
     
-    ///定义闭包// XMPP请求结果的block
-    typealias XMPPResultBlock = (type:XMPPResultType) -> Void
-    ///初始化闭包
-    var _resultBlock:XMPPResultBlock!
-
-   var _xmppStream: XMPPStream?
+    
+    //聊天模块
+    var _msgArchiving:XMPPMessageArchiving!
+    //聊天的数据存储
+    var _msgStorage:XMPPMessageArchivingCoreDataStorage!
+    
+    var _xmppStream: XMPPStream?
     
     //注册操作YES 注册 / NO 登录
     var registerOperation:Bool?
@@ -84,8 +93,6 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         //添加电子名片模块
         vCardStorage = XMPPvCardCoreDataStorage.sharedInstance()
         vCard = XMPPvCardTempModule.init(withvCardStorage: vCardStorage)
-       
-        
         //激活
         vCard.activate(_xmppStream)
         
@@ -93,10 +100,18 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         _avatar = XMPPvCardAvatarModule.init(withvCardTempModule: vCard)
         _avatar.activate(_xmppStream)
         
+        
         // 添加花名册模块【获取好友列表】
         rosterStorage = XMPPRosterCoreDataStorage()
         _roster = XMPPRoster(rosterStorage: rosterStorage)
         _roster.activate(_xmppStream)
+        
+        
+        // 添加聊天模块
+        _msgStorage = XMPPMessageArchivingCoreDataStorage()
+        _msgArchiving = XMPPMessageArchiving.init(messageArchivingStorage: _msgStorage)
+        _msgArchiving.activate(_xmppStream)
+        
         
         // 设置代理
         _xmppStream!.addDelegate(self, delegateQueue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
@@ -115,6 +130,7 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         vCard.deactivate()
         _avatar!.deactivate()
         _roster.deactivate()
+        _msgArchiving.deactivate()
         
         // 断开连接
         _xmppStream!.disconnect()
@@ -126,6 +142,8 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         _avatar = nil
         _roster = nil;
         rosterStorage = nil;
+        _msgArchiving = nil;
+        _msgStorage = nil;
         _xmppStream = nil
         
         
