@@ -8,7 +8,13 @@
 
 import UIKit
 
-enum XMPPResultType {
+
+
+let WCLoginStatusChangeNotification = "WCLoginStatusNotification"
+
+enum XMPPResultType:Int {
+    
+    case Connecting //连接中...
     case LoginSuccess//登录成功
     case LoginFailure//登录失败
     //网络不给力
@@ -158,7 +164,8 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
             self.setupXMPPStream()
         }
         
-        
+        // 发送通知【正在连接】
+       // self.postNotification(.Connecting)
         // 设置登录用户JID
         //resource 标识用户登录的客户端 iphone android
         // 从单例获取用户名
@@ -231,6 +238,21 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         
     }
     
+
+    //MARK: - 发出通知
+    ///WCHistoryViewControllers 登录状态
+    func postNotification(resultType:XMPPResultType){
+    
+        // 将登录状态放入字典，然后通过通知传递
+        let userInfo:[NSObject : AnyObject] = ["loginStatus" : (resultType.rawValue as AnyObject)]
+       
+
+        NSNotificationCenter.defaultCenter().postNotificationName(WCLoginStatusChangeNotification, object: nil, userInfo: userInfo as [NSObject : AnyObject])
+   
+    }
+    
+    
+    
     //MARK:   与主机断开连接
     func xmppStreamDidDisconnect(sender: XMPPStream!, withError error: NSError?) {
         
@@ -238,6 +260,11 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         // 💗如果没有错误，表示正常的断开连接(人为断开连接)
         if (_resultBlock != nil && error != nil) {
             _resultBlock!(type:.NetErr)
+        }
+        if ((error) != nil) {
+            //通知 【网络不稳定】
+            self.postNotification(.NetErr)
+           
         }
         print("**与主机断开连接")
     }
@@ -254,6 +281,9 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         if (_resultBlock != nil) {
             _resultBlock!(type:.LoginSuccess)
         }
+        //通知 【授权成功】
+        self.postNotification(.LoginSuccess)
+        
         
     }
     
@@ -266,6 +296,9 @@ class WCXMPPTool: NSObject,XMPPStreamDelegate {
         if (_resultBlock != nil) {
             _resultBlock!(type: .LoginFailure)
         }
+        
+        //通知 【授权失败】
+        self.postNotification(.LoginFailure)
     }
     
     //MARK:  注册成功

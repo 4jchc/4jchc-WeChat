@@ -49,7 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMPPStreamDelegate {
             self.window!.rootViewController = storyboard.instantiateInitialViewController();
             
             // 自动登录服务
-            WCXMPPTool.sharedWCXMPPTool.xmppUserLogin(nil)
+            // 自动登录服务
+            // 1秒后再自动登录
+            //MARK: -  一般情况下，都不会马上连接，会稍微等等
+            
+            //延时加载
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                
+                 WCXMPPTool.sharedWCXMPPTool.xmppUserLogin(nil)
+            })
+  
         }
         return true
     }

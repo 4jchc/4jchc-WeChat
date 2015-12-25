@@ -30,7 +30,7 @@
         <!--Root View Controller-->
         <scene sceneID="mTs-6V-4Cq">
             <objects>
-                <tableViewController id="5uP-pY-Muq" sceneMemberID="viewController">
+                <tableViewController id="5uP-pY-Muq" customClass="WCHistoryViewController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RAm-9p-yda">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,11 +53,31 @@
                             <outlet property="delegate" destination="5uP-pY-Muq" id="c3Y-g8-R0K"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="8PP-uD-aRY"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="8PP-uD-aRY">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="LVf-rg-nAq">
+                            <view key="customView" contentMode="scaleToFill" id="09f-WG-UhG">
+                                <rect key="frame" x="20" y="5" width="133" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wjg-is-wrY">
+                                        <rect key="frame" x="8" y="7" width="20" height="20"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.28709712570000001" green="0.87628235480000005" blue="0.1084342292" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="indicatorView" destination="wjg-is-wrY" id="Bs4-in-QEc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpb-hX-lFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1602" y="-1368"/>
+            <point key="canvasLocation" x="-1706" y="-1390"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="r4c-Qt-eaf">
@@ -81,7 +101,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9sG-3E-uIU">
@@ -132,7 +152,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="yDa-LB-hHh">
                                 <cells>
@@ -197,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="-893" y="-337"/>
         </scene>
-        <!--Root View Controller-->
+        <!--发现-->
         <scene sceneID="0oU-E8-xIO">
             <objects>
                 <tableViewController id="02y-Nr-eR5" sceneMemberID="viewController">
@@ -223,7 +243,7 @@
                             <outlet property="delegate" destination="02y-Nr-eR5" id="1nE-x4-5pv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LmH-Dh-P9J"/>
+                    <navigationItem key="navigationItem" title="发现" id="LmH-Dh-P9J"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOi-Se-0Sk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -237,7 +257,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="Op4-9V-55P">
                                 <cells>
@@ -270,7 +290,7 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="bga-PB-RSQ" kind="show" id="ebI-ko-7Ge"/>
@@ -311,7 +331,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="tEo-Uz-oab">
                                 <cells>
@@ -333,7 +353,7 @@
                                                     <rect key="frame" x="16" y="22" width="34" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -358,7 +378,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kzw-Hu-Rdf">
@@ -386,7 +406,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N04-Uq-cUh">
@@ -418,7 +438,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BLI-C1-EBD">
@@ -446,7 +466,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gbk-bl-qTc">
@@ -474,7 +494,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qbY-2w-GZi">
@@ -502,7 +522,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wHT-tB-DjM">
@@ -530,7 +550,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="xxxx" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aYn-CI-yAe">
@@ -578,7 +598,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="Pln-Lu-Iuo">
                                 <cells>
@@ -625,7 +645,7 @@
         <!--我-->
         <scene sceneID="zhe-d1-NlD">
             <objects>
-                <navigationController id="mCh-ud-ECc" sceneMemberID="viewController">
+                <navigationController id="mCh-ud-ECc" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我" image="tabbar_me" id="w1j-Ws-FdZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sVT-Ai-jlx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -643,7 +663,7 @@
         <!--发现-->
         <scene sceneID="OZa-6q-bFh">
             <objects>
-                <navigationController id="nkM-nV-P4V" sceneMemberID="viewController">
+                <navigationController id="nkM-nV-P4V" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发现" image="tabbar_discover" id="hsT-XE-lTZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ecW-s3-ktg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -661,7 +681,7 @@
         <!--通讯录-->
         <scene sceneID="vJw-jT-mWA">
             <objects>
-                <navigationController title="通讯录" id="amE-fD-Qbe" sceneMemberID="viewController">
+                <navigationController title="通讯录" id="amE-fD-Qbe" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="通讯录" image="tabbar_contacts" id="vCO-rk-n3P"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YBd-IJ-YsN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -679,7 +699,7 @@
         <!--微信-->
         <scene sceneID="gfQ-j2-jBL">
             <objects>
-                <navigationController id="c7H-Ca-06W" sceneMemberID="viewController">
+                <navigationController id="c7H-Ca-06W" customClass="WCNavigationController" customModule="WeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="微信" image="tabbar_mainframe" badgeValue="1" id="KeM-1g-Em5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fwM-n3-w2E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -692,7 +712,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="weo-5v-fQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2408" y="-1328"/>
+            <point key="canvasLocation" x="-2388" y="-1359"/>
         </scene>
     </scenes>
     <resources>

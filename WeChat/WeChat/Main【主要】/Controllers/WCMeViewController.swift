@@ -9,6 +9,7 @@
 import UIKit
 
 class WCMeViewController: UITableViewController {
+    
 
     /** 头像 */
     @IBOutlet weak var headerView: UIImageView!
@@ -28,6 +29,14 @@ class WCMeViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadmyVCard()
+
+    }
+
+    
+    func loadmyVCard(){
+        
         // 显示当前用户个人信息
         
         // 如何使用CoreData获取数据
@@ -55,15 +64,20 @@ class WCMeViewController: UITableViewController {
         
         let user: String  = WCUserInfo.sharedWCUserInfo.user;
         self.weixinNumLabel.text = "微信号:\(user)"
-   
-
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        loadmyVCard()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -76,6 +90,11 @@ class WCMeViewController: UITableViewController {
         return 1
     }
 
+    
+    
+    
+
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
@@ -86,6 +105,8 @@ class WCMeViewController: UITableViewController {
     }
     */
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

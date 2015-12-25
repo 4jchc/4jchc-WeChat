@@ -59,10 +59,6 @@ class WCProfileViewController: UITableViewController,UIImagePickerControllerDele
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     /**
      *  加载电子名片信息
@@ -108,7 +104,7 @@ class WCProfileViewController: UITableViewController,UIImagePickerControllerDele
         //self.emailLabel.text = myVCard.mailer;
         
         //邮件解析
-        if (myVCard.emailAddresses.count > 0) {
+        if (myVCard.emailAddresses?.count > 0) {
             //不管有多少个邮件，只取第一个
             self.emailLabel.text = myVCard.emailAddresses[0] as? String;
         }

@@ -31,6 +31,7 @@
 		964574FE1C2C2B5800BED761 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 964574ED1C2C2B5800BED761 /* UIImageView+WebCache.m */; };
 		964574FF1C2C2B5800BED761 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 964574EF1C2C2B5800BED761 /* UIView+WebCacheOperation.m */; };
 		964575031C2C2BE300BED761 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 964575021C2C2BE300BED761 /* HttpTool.m */; };
+		964575051C2C451700BED761 /* WCHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964575041C2C451700BED761 /* WCHistoryViewController.swift */; };
 		965379571C2A3B9300DC3E3D /* WCXMPPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379561C2A3B9300DC3E3D /* WCXMPPTool.swift */; };
 		965379591C2A3DC200DC3E3D /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965379581C2A3DC200DC3E3D /* UIStoryboard.swift */; };
 		9653795B1C2A9B3900DC3E3D /* WCProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */; };
@@ -253,6 +254,7 @@
 		964574EF1C2C2B5800BED761 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		964575011C2C2BE300BED761 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
 		964575021C2C2BE300BED761 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		964575041C2C451700BED761 /* WCHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCHistoryViewController.swift; sourceTree = "<group>"; };
 		965379561C2A3B9300DC3E3D /* WCXMPPTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCXMPPTool.swift; sourceTree = "<group>"; };
 		965379581C2A3DC200DC3E3D /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCProfileViewController.swift; sourceTree = "<group>"; };
@@ -1595,6 +1597,7 @@
 			isa = PBXGroup;
 			children = (
 				967A80FB1C28481C00772D90 /* WCMeViewController.swift */,
+				964575041C2C451700BED761 /* WCHistoryViewController.swift */,
 				965379621C2ADE9E00DC3E3D /* WCContactsViewController.swift */,
 				96FC8E3B1C2BA30D007B95F5 /* WCChatViewController.swift */,
 				9653795A1C2A9B3900DC3E3D /* WCProfileViewController.swift */,
@@ -1779,6 +1782,7 @@
 				967A7EDE1C27D40900772D90 /* ViewController.swift in Sources */,
 				967A80C41C27D45D00772D90 /* GCDMulticastDelegate.m in Sources */,
 				967A80691C27D45D00772D90 /* XMPPStream.m in Sources */,
+				964575051C2C451700BED761 /* WCHistoryViewController.swift in Sources */,
 				967A80AA1C27D45D00772D90 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
 				96FC8E3C1C2BA30D007B95F5 /* WCChatViewController.swift in Sources */,
 				964574FA1C2C2B5800BED761 /* UIImage+GIF.m in Sources */,

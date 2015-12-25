@@ -12,9 +12,7 @@ protocol WCEditProfileViewControllerDelegate:NSObjectProtocol{
     
     
     func editProfileViewControllerDidSave()
-    
-    
-    
+ 
 }
 
 class WCEditProfileViewController: UITableViewController {
